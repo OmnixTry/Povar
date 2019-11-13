@@ -9,3 +9,4 @@ Status | Name | Estimation | Priority
 В розробці | Добавити нові рецепти | 8 | 4  
 В розробці | Переглядати свій рівень | 2 | 5  
 [Опис функцій](Task_description/Sprint№1.txt)
+[Інструкція по PR](Instruction.md)
