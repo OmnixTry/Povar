@@ -18,7 +18,6 @@ bool user_data(string logn, string &passwd, string &accountType, float &lvl);
 class user
 {
 protected:
-	void write_to_file(string accountType);
 	string login;
 	string password;
 public:
@@ -32,6 +31,7 @@ public:
 class student : public user
 {
 public:
+	void write_to_file();
 	float get_level();
 	student(string logn, string passwd, float lvl = 0) : user(logn, passwd), level(lvl) {};
 	~student() {};
@@ -42,6 +42,7 @@ private:
 class teacher : public user
 {
 public:
+	void write_to_file();
 	teacher(string logn, string passwd) : user(logn, passwd) {};
 	~teacher() {};
 	friend bool add_user(string logn, string passwd, string accountType);

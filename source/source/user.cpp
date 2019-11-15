@@ -10,31 +10,34 @@ bool add_user(string logn, string passwd, string accountType)
 	if (accountType == "teacher")
 	{
 		new_user = new teacher(logn, passwd);
-		new_user->write_to_file(accountType);
+		((teacher *)new_user)->write_to_file();
 		return true;
 	}
 	else if (accountType == "student")
 	{
 		new_user = new student(logn, passwd);
-		new_user->write_to_file(accountType);
+		((student *)new_user)->write_to_file();
 		return true;
 	}
 	return false;
 }
 
-void user::write_to_file(string accountType) 
+void student::write_to_file() 
 {
 	const string users_file_name = "..\\data\\users.txt";
 	ofstream users(users_file_name, ios::app);
 	string buff; 
-	if (accountType == "student")
-	{
-		buff = accountType + " " + login + " " + password + " 0\n";
-	}
-	else
-	{
-		buff = accountType + " " + login + " " + password + "\n";
-	}
+	buff = "student " + login + " " + password + " 0\n";
+	users << buff;
+	users.close();
+}
+
+void teacher::write_to_file() 
+{
+	const string users_file_name = "..\\data\\users.txt";
+	ofstream users(users_file_name, ios::app);
+	string buff; 
+	buff = "teacher " + login + " " + password + "\n";
 	users << buff;
 	users.close();
 }
