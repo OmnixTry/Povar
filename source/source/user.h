@@ -2,7 +2,8 @@
 #include <string>
 using namespace std;
 
-class user_data_base_controller{
+class user_data_base_controller
+{
 public:
 	bool add_user(string logn, string passwd, string accountType);
 	// returns false when something went wrong!!!
