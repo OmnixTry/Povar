@@ -4,7 +4,7 @@
 #include "user.h"
 using namespace std;
 
-bool user_data_base_controller::add_user(string logn, string passwd, string accountType) 
+bool add_user(string logn, string passwd, string accountType) 
 {
 	user *new_user;
 	if (accountType == "teacher")
@@ -58,7 +58,7 @@ void parse_user_data(string dataLine, string logn, string &passwd, string &accou
 	}
 }
 
-bool user_data_base_controller::user_data(string logn, string &passwd, string &accountType, float &lvl) 
+bool user_data(string logn, string &passwd, string &accountType, float &lvl) 
 {
 	const string dir_file = "..\\data\\users.txt";
 	ifstream user_data_file(dir_file);
