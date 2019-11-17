@@ -10,7 +10,6 @@ vector<recipe> recipeEditor::searchByCategory(string category){
 	vector<recipe> recipes;
 	ifstream in("..\\data\\recipes.txt");
 	string line, name, recipeCategory, ingridients, equipment, technique, instruction, column;
-	const int colNumber = 6;
 	while (getline(in, line)) {
 		istringstream stream(line);
 		for (int i = 0; getline(stream, column, '\t'); i++) {
