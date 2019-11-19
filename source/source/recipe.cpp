@@ -1,6 +1,6 @@
 #include "recipe.h"
-
-recipe::recipe(string name, string ingridients, string equipment, string technique, string instruction, string category)
+using namespace std;
+recipe::recipe(string name, string ingridients, string equipment, string technique, string instruction, string category, int level_of_difficulty)
 {
 	this->name = name;
 	this->ingridents = ingridients;
@@ -8,4 +8,6 @@ recipe::recipe(string name, string ingridients, string equipment, string techniq
 	this->technique = technique;
 	this->instruction = instruction;
 	this->category = category;
+	this->level_of_difficulty = level_of_difficulty;
 }
+recipe::recipe() {};

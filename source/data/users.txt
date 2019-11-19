@@ -2,4 +2,5 @@ teacher teacher qwerty
 student student qwerty 0
 student stud stud 0
 teacher each teach
-teacher teac teac
+teacher tea teac
+student Siusarna qwertyy 0

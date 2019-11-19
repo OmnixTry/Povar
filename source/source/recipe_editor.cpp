@@ -1,8 +1,8 @@
 #include "recipe_editor.h"
-
-void recipeEditor::addRecipe(recipe &rcp){
+using namespace std;
+void recipeEditor::addRecipe(recipe rcp){
 	ofstream out("..\\data\\recipes.txt", ios::app);
-	out << rcp.getName() << '\t' << rcp.getCategory() << '\t' << rcp.getIngridients() << '\t' << rcp.getEquipment() << '\t' << rcp.getTechnique() << '\t' << rcp.getInstruction() << endl;
+	out << rcp.getName() << '\t' << rcp.getCategory() << '\t' << rcp.getIngridients() << '\t' << rcp.getEquipment() << '\t' << rcp.getTechnique() << '\t' << rcp.getInstruction()<< '\t' << rcp.getLevel() << endl;
 	out.close();
 }
 
@@ -10,6 +10,7 @@ vector<recipe> recipeEditor::searchByCategory(string category){
 	vector<recipe> recipes;
 	ifstream in("..\\data\\recipes.txt");
 	string line, name, recipeCategory, ingridients, equipment, technique, instruction, column;
+	int levelOfDiff;
 	while (getline(in, line)) {
 		istringstream stream(line);
 		for (int i = 0; getline(stream, column, '\t'); i++) {
@@ -32,10 +33,13 @@ vector<recipe> recipeEditor::searchByCategory(string category){
 			case 5:
 				instruction = column;
 				break;
+			case 6:
+				levelOfDiff = stoi(column);
+				break;
 			}
 		}
 		if (recipeCategory == category) {
-			recipes.push_back(recipe(name, ingridients, equipment, technique, instruction, recipeCategory));
+			recipes.push_back(recipe(name, ingridients, equipment, technique, instruction, recipeCategory, levelOfDiff));
 		}
 	}
 	in.close();
