@@ -4,6 +4,6 @@
 #include <sstream>
 class recipeEditor {
 public:
-	void addRecipe(recipe &rcp);
-	vector<recipe> searchByCategory(string category);
+	void addRecipe(recipe rcp);
+	std::vector<recipe> searchByCategory(std::string category);
 };
