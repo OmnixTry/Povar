@@ -46,7 +46,7 @@ void parse_user_data(string dataLine, string logn, string &passwd, string &accou
 	int tmp = dataLine.find_first_of(' ');
 	accountType = dataLine.substr(0, tmp);
 	tmp = accountType.size() + 1 + logn.size() + 1;
-	passwd = dataLine.substr(tmp, dataLine.find(' ', tmp + 1) - tmp - 1);
+	passwd = dataLine.substr(tmp, dataLine.find(' ', tmp + 1) - tmp);
 	tmp += 1 + passwd.size();
 	if (tmp <= dataLine.size())
 	{
