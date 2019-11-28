@@ -13,7 +13,7 @@ vector<recipe> recipeEditor::searchByCategory(string category){
 	int levelOfDiff;
 	while (getline(in, line)) {
 		istringstream stream(line);
-		for (int i = 0; getline(stream, column, '\t'); i++) {
+		for (int i = 0; getline(stream, column, '\t'); i++){
 			switch (i) {
 			case 0:
 				name = column;
@@ -38,7 +38,7 @@ vector<recipe> recipeEditor::searchByCategory(string category){
 				break;
 			}
 		}
-		if (recipeCategory == category) {
+		if (recipeCategory == category){
 			recipes.push_back(recipe(name, ingridients, equipment, technique, instruction, recipeCategory, levelOfDiff));
 		}
 	}
@@ -51,7 +51,7 @@ std::vector<recipe> recipeEditor::searchByName(std::string name){
 	ifstream in("..\\data\\recipes.txt");
 	string line, recipeName, category, ingridients, equipment, technique, instruction, column;
 	int levelOfDiff;
-	while (getline(in, line)) {
+	while (getline(in, line)){
 		istringstream stream(line);
 		for (int i = 0; getline(stream, column, '\t'); i++) {
 			switch (i) {
@@ -78,7 +78,8 @@ std::vector<recipe> recipeEditor::searchByName(std::string name){
 				break;
 			}
 		}
-		if (recipeName == name) {
+		size_t found = recipeName.find(name);
+		if (found != string::npos){
 			recipes.push_back(recipe(recipeName, ingridients, equipment, technique, instruction, category, levelOfDiff));
 		}
 	}
