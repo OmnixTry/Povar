@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <vector>
+#include "recipe.h"
 
 class user_data_base_controller
 {
@@ -24,10 +26,14 @@ class user
 protected:
 	std::string login;
 	std::string password;
+	std::vector<recipe> favorites;
+	void build_favorites();
 public:
+	std::vector<recipe> get_favorites();
+	void add_to_favorites(std::string recipeName);
 	std::string get_login();
 	std::string get_password();
-	user(std::string logn, std::string passwd) : login(logn), password(passwd) {};
+	user(std::string logn, std::string passwd);
 	~user() {};
 	friend bool user_data_base_controller::add_user(std::string logn, std::string passwd, std::string accountType);
 };

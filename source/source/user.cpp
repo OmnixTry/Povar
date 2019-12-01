@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "recipe_editor.h"
 #include "user.h"
 using namespace std;
 
@@ -93,4 +95,37 @@ string user::get_password()
 float student::get_level() 
 {
 	return level;
+}
+
+void user::add_to_favorites(std::string recipeName) 
+{
+	ofstream fav_list("..\\data\\" + login + "_favorites.txt", ios::app);
+	fav_list << recipeName << endl;
+	fav_list.close();
+}
+
+void user::build_favorites()
+{
+	ifstream fav_list("..\\data\\" + login + "_favorites.txt");
+	string recipe_name;
+	favorites.clear();
+	if (!fav_list.is_open()) return;
+	recipeEditor the_editor;
+
+	while (!fav_list.eof()) 
+	{	
+		getline(fav_list, recipe_name);
+		if(recipe_name.size() != 0)
+			favorites.push_back(the_editor.searchByName(recipe_name)[0]);
+	}
+}
+
+user::user(std::string logn, std::string passwd) : login(logn), password(passwd) 
+{
+	build_favorites();
+}
+
+std::vector<recipe> user::get_favorites()
+{
+	return favorites;
 }
