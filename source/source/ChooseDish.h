@@ -21,47 +21,52 @@ namespace source {
 	{
 	public:
 		int level;
+		String^ login;
 		String^ category;
-		recipe *recipeForButton2;
-		recipe *recipeForButton3;
-		recipe *recipeForButton4;
-		recipe *recipeForButton5;
-		recipe *recipeForButton6;
-		ChooseDish(int lvl, String^ category)
+		String ^recipeForButton2;
+		String ^recipeForButton3;
+		String ^recipeForButton4;
+		String ^recipeForButton5;
+		String ^recipeForButton6;
+		ChooseDish(int lvl, String^ category, String^ login)
 		{
 			this->level = lvl;
+			this->login = login;
 			this->category = category;
 			InitializeComponent();
 			
 		}
-		void setRecipeForButton2(recipe* rec) {
+		String^ get_login() {
+			return this->login;
+		}
+		void setRecipeForButton2(String ^rec) {
 			this->recipeForButton2 = rec;
 		}
-		void setRecipeForButton3(recipe* rec) {
+		void setRecipeForButton3(String^ rec) {
 			this->recipeForButton3 = rec;
 		}
-		void setRecipeForButton4(recipe* rec) {
+		void setRecipeForButton4(String^ rec) {
 			this->recipeForButton4 = rec;
 		}
-		void setRecipeForButton5(recipe* rec) {
+		void setRecipeForButton5(String^ rec) {
 			this->recipeForButton5 = rec;
 		}
-		void setRecipeForButton6(recipe* rec) {
+		void setRecipeForButton6(String^ rec) {
 			this->recipeForButton6 = rec;
 		}
-		recipe* getRecipeForButton2() {
+		String^ getRecipeForButton2() {
 			return this->recipeForButton2;
 		}
-		recipe* getRecipeForButton3() {
+		String^ getRecipeForButton3() {
 			return this->recipeForButton3;
 		}
-		recipe* getRecipeForButton4() {
+		String^ getRecipeForButton4() {
 			return this->recipeForButton4;
 		}
-		recipe* getRecipeForButton5() {
+		String^ getRecipeForButton5() {
 			return this->recipeForButton5;
 		}
-		recipe* getRecipeForButton6() {
+		String^ getRecipeForButton6() {
 			return this->recipeForButton6;
 		}
 		int getLevel() {
@@ -238,96 +243,96 @@ namespace source {
 			String^ name = gcnew String(result[0].getName().c_str());
 			button3->Text = name;
 			button3->Visible = true;
-			setRecipeForButton3(&result[0]);
+			setRecipeForButton3(gcnew String(result[0].getName().c_str()));
 		}
 		else if (level == 1) {
 			String^ name = gcnew String(result[0].getName().c_str());
 			button2->Text = name;
 			button2->Visible = true;
-			setRecipeForButton2(&result[0]);
+			setRecipeForButton2(gcnew String(result[0].getName().c_str()));
 			name = gcnew String(result[1].getName().c_str());
 			button4->Text = name;
 			button4->Visible = true;
-			setRecipeForButton4(&result[1]);
+			setRecipeForButton4(gcnew String(result[1].getName().c_str()));
 		}
 		else if (level == 2) {
 			String^ name = gcnew String(result[0].getName().c_str());
 			button2->Text = name;
 			button2->Visible = true;
-			setRecipeForButton2(&result[0]);
+			setRecipeForButton2(gcnew String(result[0].getName().c_str()));
 			name = gcnew String(result[1].getName().c_str());
 			button4->Text = name;
 			button4->Visible = true;
-			setRecipeForButton4(&result[1]);
+			setRecipeForButton4(gcnew String(result[1].getName().c_str()));
 			name = gcnew String(result[2].getName().c_str());
 			button3->Text = name;
 			button3->Visible = true;
-			setRecipeForButton3(&result[2]);
+			setRecipeForButton3(gcnew String(result[2].getName().c_str()));
 		}
 		else if (level == 3) {
 			String^ name = gcnew String(result[0].getName().c_str());
 			button2->Text = name;
 			button2->Visible = true;
-			setRecipeForButton2(&result[0]);
+			setRecipeForButton2(gcnew String(result[0].getName().c_str()));
 			name = gcnew String(result[1].getName().c_str());
 			button4->Text = name;
 			button4->Visible = true;
-			setRecipeForButton4(&result[1]);
+			setRecipeForButton4(gcnew String(result[1].getName().c_str()));
 			name = gcnew String(result[2].getName().c_str());
 			button3->Text = name;
 			button3->Visible = true;
-			setRecipeForButton3(&result[2]);
+			setRecipeForButton3(gcnew String(result[2].getName().c_str()));
 			name = gcnew String(result[3].getName().c_str());
 			button5->Text = name;
 			button5->Visible = true;
-			setRecipeForButton5(&result[3]);
+			setRecipeForButton5(gcnew String(result[3].getName().c_str()));
 		}
 		else if (level == 4) {
 			String^ name = gcnew String(result[0].getName().c_str());
 			button2->Text = name;
 			button2->Visible = true;
-			setRecipeForButton2(&result[0]);
+			setRecipeForButton2(gcnew String(result[0].getName().c_str()));
 			name = gcnew String(result[1].getName().c_str());
 			button4->Text = name;
 			button4->Visible = true;
-			setRecipeForButton4(&result[1]);
+			setRecipeForButton4(gcnew String(result[1].getName().c_str()));
 			name = gcnew String(result[2].getName().c_str());
 			button3->Text = name;
 			button3->Visible = true;
-			setRecipeForButton3(&result[2]);
+			setRecipeForButton3(gcnew String(result[2].getName().c_str()));
 			name = gcnew String(result[3].getName().c_str());
 			button5->Text = name;
 			button5->Visible = true;
-			setRecipeForButton5(&result[3]);
+			setRecipeForButton5(gcnew String(result[3].getName().c_str()));
 			name = gcnew String(result[4].getName().c_str());
 			button6->Text = name;
 			button6->Visible = true;
-			setRecipeForButton6(&result[4]);
+			setRecipeForButton6(gcnew String(result[4].getName().c_str()));
 		}
 		button1->Visible = false;
 	}
 private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton2());
+	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton2(), get_login());
 	form_cooking->Show();
 	this->Close();
 }
 private: System::Void Button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton3());
+	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton3(), get_login());
 	form_cooking->Show();
 	this->Close();
 }
 private: System::Void Button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton4());
+	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton4(), get_login());
 	form_cooking->Show();
 	this->Close();
 }
 private: System::Void Button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton5());
+	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton5(), get_login());
 	form_cooking->Show();
 	this->Close();
 }
 private: System::Void Button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton6());
+	Cooking^ form_cooking = gcnew Cooking(getRecipeForButton6(), get_login());
 	form_cooking->Show();
 	this->Close();
 }

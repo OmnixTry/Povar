@@ -1,5 +1,6 @@
 #pragma once
 #include "ChooseDish.h"
+#include "recipe_editor.h"
 namespace source {
 
 	using namespace System;
@@ -26,6 +27,9 @@ namespace source {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Label^ label7;
 	public:
 		float lvl;
 		StudentPage(String^ login, float lvl)
@@ -77,6 +81,9 @@ namespace source {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -88,7 +95,7 @@ namespace source {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(120, 29);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"My Level: "+get_lvl();
+			this->label1->Text = L"My Level: ";
 			// 
 			// label2
 			// 
@@ -96,7 +103,7 @@ namespace source {
 			this->label2->BackColor = System::Drawing::Color::Chocolate;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(325, 79);
+			this->label2->Location = System::Drawing::Point(299, 80);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(427, 46);
 			this->label2->TabIndex = 1;
@@ -202,13 +209,50 @@ namespace source {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &StudentPage::Button4_Click);
 			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox1->Location = System::Drawing::Point(12, 420);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(329, 34);
+			this->textBox1->TabIndex = 10;
+			// 
+			// button5
+			// 
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button5->Location = System::Drawing::Point(12, 483);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(265, 69);
+			this->button5->TabIndex = 11;
+			this->button5->Text = L"Search recipe by name";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &StudentPage::Button5_Click);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->ForeColor = System::Drawing::Color::Red;
+			this->label7->Location = System::Drawing::Point(390, 470);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(211, 52);
+			this->label7->TabIndex = 12;
+			this->label7->Text = L"Not found";
+			this->label7->Visible = false;
+			// 
 			// StudentPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1009, 445);
+			this->ClientSize = System::Drawing::Size(1009, 612);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->button5);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label5);
@@ -228,24 +272,38 @@ namespace source {
 #pragma endregion
 	private: System::Void Button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ category = "soups";
-		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category);
+		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category, get_login());
 		dish_form->Show();
 
 	}
 	private: System::Void Button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ category = "garnishes";
-		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category);
+		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category, get_login());
 		dish_form->Show();
 	}
 	private: System::Void Button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ category = "meats";
-		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category);
+		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category, get_login());
 		dish_form->Show();
 	}
 	private: System::Void Button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ category = "dessert";
-		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category);
+		ChooseDish^ dish_form = gcnew ChooseDish(get_lvl(), category, get_login());
 		dish_form->Show();
+	}
+	private: System::Void Button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		label7->Visible = false;
+		std::string nameOfRecipe = msclr::interop::marshal_as<std::string>(textBox1->Text);
+		recipeEditor* edit = new recipeEditor();
+		std::vector<recipe> recipes = edit->searchByName(nameOfRecipe);
+		if (recipes.size() < 1) {
+			label7->Visible = true;
+		}
+		else {
+			Cooking^ form_cooking = gcnew Cooking(textBox1->Text, get_login());
+			form_cooking->Show();
+			this->Close();
+		}
 	}
 };
 }
