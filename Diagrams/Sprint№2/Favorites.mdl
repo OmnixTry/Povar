@@ -79,539 +79,20 @@
 	exportControl 	"Public"
 	global     	TRUE
 	logical_models 	(list unit_reference_list
-	    (object Class "Студент"
-		quid       	"5DCFC9C802A5"
-		stereotype 	"Actor")
-	    (object Class "Неавторизований Кориистувач"
-		quid       	"5DCFCA57021D"
-		stereotype 	"Actor")
-	    (object Class "Викладач"
-		quid       	"5DCFCAF201CF"
-		stereotype 	"Actor")
-	    (object Class "BaseUser"
-		quid       	"5DCFCC1503E7"
-		operations 	(list Operations
-		    (object Operation "get_login"
-			quid       	"5DCFCCD001DC"
-			result     	"string"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "get_password"
-			quid       	"5DCFCCF10254"
-			result     	"string"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "BaseUser"
-			quid       	"5DCFCD0F00E4"
-			parameters 	(list Parameters
-			    (object Parameter "logn"
-				quid       	"5DCFCDF103C3"
-				type       	"string")
-			    (object Parameter "passwd"
-				quid       	"5DCFCE2C029C"
-				type       	"string"))
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "login"
-			quid       	"5DCFCC3701EC"
-			type       	"string"
-			exportControl 	"Protected")
-		    (object ClassAttribute "password"
-			quid       	"5DCFCC790104"
-			type       	"string"
-			exportControl 	"Protected")))
-	    (object Class "Teacher"
-		quid       	"5DD0068B0349"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"5DD0081E000B"
-			supplier   	"Use Case View::BaseUser"
-			quidu      	"5DCFCC1503E7"))
-		operations 	(list Operations
-		    (object Operation "write_to_file"
-			quid       	"5DD006A801ED"
-			result     	"void"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "teacher"
-			quid       	"5DD006D002DD"
-			parameters 	(list Parameters
-			    (object Parameter "logn"
-				quid       	"5DD006E101D6"
-				type       	"string")
-			    (object Parameter "passwd"
-				quid       	"5DD006F4025E"
-				type       	"string"))
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)))
-	    (object Class "Student"
-		quid       	"5DD00722035E"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"5DD0082502FB"
-			supplier   	"Use Case View::BaseUser"
-			quidu      	"5DCFCC1503E7"))
-		operations 	(list Operations
-		    (object Operation "get_level"
-			quid       	"5DD0076C03CE"
-			result     	"float"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "write_to_file"
-			quid       	"5DD0077F02DD"
-			result     	"void"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "student"
-			quid       	"5DD0079D02BD"
-			parameters 	(list Parameters
-			    (object Parameter "logn"
-				quid       	"5DD007C2017C"
-				type       	"string")
-			    (object Parameter "passwd"
-				quid       	"5DD007D501CD"
-				type       	"string"))
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "level"
-			quid       	"5DD007350365"
-			type       	"float")
-		    (object ClassAttribute "Favorites"
-			quid       	"5DE6BC8E0303")))
-	    (object Class "user_data_base_controler"
-		quid       	"5DD0083E00AF"
-		operations 	(list Operations
-		    (object Operation "add_user"
-			quid       	"5DD00876007F"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "user_data"
-			quid       	"5DD008800215"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)))
-	    (object Class "Interface"
-		quid       	"5DD008A70177")
-	    (object Class "recipe_editor"
-		quid       	"5DD43AAD0178"
-		operations 	(list Operations
-		    (object Operation "addRecipe"
-			quid       	"5DD43C64032B"
-			parameters 	(list Parameters
-			    (object Parameter "recipe rcp"
-				quid       	"5DD43C7D02A8"))
-			result     	"void"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "searchByCategory"
-			quid       	"5DD43C7D0291"
-			result     	"vector<recipe>"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "searchByName"
-			quid       	"5DE6B60300A5"
-			result     	"vector<recipe>"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)))
-	    (object Class "recipe"
-		quid       	"5DD43ABF0109"
-		used_nodes 	(list uses_relationship_list
-		    (object Uses_Relationship
-			quid       	"5DD43D4D0377"
-			supplier   	"Use Case View::recipe_editor"
-			quidu      	"5DD43AAD0178")
-		    (object Uses_Relationship
-			quid       	"5DE6BCF502B9"
-			supplier   	"Use Case View::FavoritesDataBaseController"
-			quidu      	"5DE6BC58006B"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "name"
-			quid       	"5DD43B9201A2"
-			type       	"string")
-		    (object ClassAttribute "ingridients"
-			quid       	"5DD43B9A038A"
-			type       	"string")
-		    (object ClassAttribute "equipment"
-			quid       	"5DD43BAE0058"
-			type       	"string")
-		    (object ClassAttribute "technique"
-			quid       	"5DD43BB80328"
-			type       	"string")
-		    (object ClassAttribute "instruction"
-			quid       	"5DD43BC3026C"
-			type       	"string")
-		    (object ClassAttribute "category"
-			quid       	"5DD43BD300C2"
-			type       	"string")
-		    (object ClassAttribute "level_of_difficulty"
-			quid       	"5DD43BDD0127"
-			type       	"int")))
-	    (object Class "FavoritesDataBaseController"
-		quid       	"5DE6BC58006B"
-		operations 	(list Operations
-		    (object Operation "AddToFavorites"
-			quid       	"5DE6BCA500CA"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "LoadFavorites"
-			quid       	"5DE6BCB40043"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)))
-	    (object Class "FavoritesDa"
-		quid       	"5DE6BCE50153")
-	    (object UseCase "Уввійти у систему"
-		quid       	"5DCFC9FC01DC")
-	    (object UseCase "Зареєструватися"
-		quid       	"5DCFCA0A00E7")
-	    (object UseCase "Обрати Тип страви"
-		quid       	"5DCFCA1F02DC")
-	    (object UseCase "Переглянути Промо Ролик"
-		quid       	"5DCFCA80022D")
-	    (object UseCase "Додати Новий Рецепт"
-		quid       	"5DCFCA960014")
-	    (object UseCase "Переглянути Рівень"
-		quid       	"5DCFCADE02DC")
-	    (object Association "$UNNAMED$0"
-		quid       	"5DCFCB05022C"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$1"
-			quid       	"5DCFCB0600FA"
-			supplier   	"Use Case View::Уввійти у систему"
-			quidu      	"5DCFC9FC01DC"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$2"
-			quid       	"5DCFCB0600FC"
-			supplier   	"Use Case View::Студент"
-			quidu      	"5DCFC9C802A5")))
-	    (object Association "$UNNAMED$3"
-		quid       	"5DCFCB0C028E"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$4"
-			quid       	"5DCFCB0D0269"
-			supplier   	"Use Case View::Зареєструватися"
-			quidu      	"5DCFCA0A00E7"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$5"
-			quid       	"5DCFCB0D026B"
-			supplier   	"Use Case View::Неавторизований Кориистувач"
-			quidu      	"5DCFCA57021D")))
-	    (object Association "$UNNAMED$6"
-		quid       	"5DCFCB11007E"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$7"
-			quid       	"5DCFCB1103BA"
-			supplier   	"Use Case View::Уввійти у систему"
-			quidu      	"5DCFC9FC01DC"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$8"
-			quid       	"5DCFCB1103BC"
-			supplier   	"Use Case View::Викладач"
-			quidu      	"5DCFCAF201CF")))
-	    (object Association "$UNNAMED$9"
-		quid       	"5DCFCB2500DE"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$10"
-			quid       	"5DCFCB3A01EA"
-			supplier   	"Use Case View::Обрати Тип страви"
-			quidu      	"5DCFCA1F02DC"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$11"
-			quid       	"5DCFCB3A01EC"
-			supplier   	"Use Case View::Студент"
-			quidu      	"5DCFC9C802A5")))
-	    (object Association "$UNNAMED$12"
-		quid       	"5DCFCB3F00D5"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$13"
-			quid       	"5DCFCB3F03DA"
-			supplier   	"Use Case View::Переглянути Промо Ролик"
-			quidu      	"5DCFCA80022D"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$14"
-			quid       	"5DCFCB3F03DC"
-			supplier   	"Use Case View::Неавторизований Кориистувач"
-			quidu      	"5DCFCA57021D")))
-	    (object Association "$UNNAMED$15"
-		quid       	"5DCFCB4403B7"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$16"
-			quid       	"5DCFCB450302"
-			supplier   	"Use Case View::Переглянути Рівень"
-			quidu      	"5DCFCADE02DC"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$17"
-			quid       	"5DCFCB450304"
-			supplier   	"Use Case View::Студент"
-			quidu      	"5DCFC9C802A5")))
-	    (object Association "$UNNAMED$18"
-		quid       	"5DCFCB520224"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$19"
-			quid       	"5DCFCB53009A"
-			supplier   	"Use Case View::Уввійти у систему"
-			quidu      	"5DCFC9FC01DC"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$20"
-			quid       	"5DCFCB53009C"
-			supplier   	"Use Case View::Неавторизований Кориистувач"
-			quidu      	"5DCFCA57021D")))
-	    (object Association "$UNNAMED$21"
-		quid       	"5DCFCB5A0126"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$22"
-			quid       	"5DCFCB5B03CA"
-			supplier   	"Use Case View::Додати Новий Рецепт"
-			quidu      	"5DCFCA960014"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$23"
-			quid       	"5DCFCB5B03CC"
-			supplier   	"Use Case View::Викладач"
-			quidu      	"5DCFCAF201CF")))
-	    (object Association "$UNNAMED$24"
-		quid       	"5DD008EE00FD"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$25"
-			quid       	"5DD008EE034B"
-			supplier   	"Use Case View::Interface"
-			quidu      	"5DD008A70177"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$26"
-			quid       	"5DD008EE034D"
-			supplier   	"Use Case View::Teacher"
-			quidu      	"5DD0068B0349")))
-	    (object Association "$UNNAMED$27"
-		quid       	"5DD008F7017D"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$28"
-			quid       	"5DD008F80043"
-			supplier   	"Use Case View::Interface"
-			quidu      	"5DD008A70177"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$29"
-			quid       	"5DD008F80046"
-			supplier   	"Use Case View::Student"
-			quidu      	"5DD00722035E")))
-	    (object Association "$UNNAMED$30"
-		quid       	"5DD0090C00ED"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$31"
-			quid       	"5DD0090C039B"
-			supplier   	"Use Case View::user_data_base_controler"
-			quidu      	"5DD0083E00AF"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$32"
-			quid       	"5DD0090C039E"
-			supplier   	"Use Case View::Interface"
-			quidu      	"5DD008A70177")))
-	    (object Association "$UNNAMED$33"
-		quid       	"5DD43CF800EE"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$34"
-			quid       	"5DD43CF90309"
-			supplier   	"Use Case View::Interface"
-			quidu      	"5DD008A70177"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$35"
-			quid       	"5DD43CF9030D"
-			supplier   	"Use Case View::recipe_editor"
-			quidu      	"5DD43AAD0178")))
-	    (object Association "$UNNAMED$36"
-		quid       	"5DE6BCDC0339"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$37"
-			quid       	"5DE6BCDE0218"
-			supplier   	"Use Case View::Interface"
-			quidu      	"5DD008A70177"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$38"
-			quid       	"5DE6BCDE021C"
-			supplier   	"Use Case View::FavoritesDataBaseController"
-			quidu      	"5DE6BC58006B")))
 	    (object Mechanism @1
-		logical_models 	(list unit_reference_list
-		    (object Object "Interface: login_interface"
-			quid       	"5DD00EB301FD"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5DD00F69000B"
-				supplier   	"User_data_base_controller"
-				quidu      	"5DD00EFE01CD"
-				messages   	(list Messages
-				    (object Message "add_user(logn, passwd)"
-					quid       	"5DD00F69000C"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"1"
-					ordinal    	0
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "User_data_base_controller"
-			quid       	"5DD00EFE01CD"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5DD00FA80088"
-				supplier   	"User_data_base_controller"
-				quidu      	"5DD00EFE01CD"
-				messages   	(list Messages
-				    (object Message "Create_user(logn, passwd)"
-					quid       	"5DD00FA80089"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"2"
-					ordinal    	1
-					quidu      	"000000000000"
-					creation   	FALSE)))
-			    (object Link
-				quid       	"5DD00FDB02CB"
-				supplier   	"User_data_base"
-				quidu      	"5DD00FD103A6"
-				messages   	(list Messages
-				    (object Message "add_to_database()"
-					quid       	"5DD00FDB02CC"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"3"
-					ordinal    	2
-					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "*[is successfull] report_success() : boolean"
-					quid       	"5DD010130223"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"ToClientFromSupplier"
-					sequence   	"4"
-					ordinal    	3
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "User_data_base"
-			quid       	"5DD00FD103A6"
-			persistence 	"Transient"
-			creationObj 	TRUE
-			multi      	FALSE)))
+		logical_models 	(list unit_reference_list))
 	    (object Mechanism @2
 		logical_models 	(list unit_reference_list
-		    (object Object "interface: login_interface"
-			quid       	"5DD0162C0365"
+		    (object Object "Interface: UserInterface"
+			quid       	"5DE6B6F0030A"
 			collaborators 	(list link_list
 			    (object Link
-				quid       	"5DD016A700CA"
-				supplier   	"User_data_base_controller"
-				quidu      	"5DD0163F02C0"
+				quid       	"5DE6B7880076"
+				supplier   	"FavoritesDataBaseController"
+				quidu      	"5DE6B7360229"
 				messages   	(list Messages
-				    (object Message "Check_Authentication()"
-					quid       	"5DD016A700CB"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"1"
-					ordinal    	0
-					quidu      	"000000000000"
-					creation   	FALSE)))
-			    (object Link
-				quid       	"5DD0170B0375"
-				supplier   	"interface: login_interface"
-				quidu      	"5DD0162C0365")
-			    (object Link
-				quid       	"5DD017C202D2"
-				supplier   	"interface: user_interface"
-				quidu      	"5DD0174200BE"
-				messages   	(list Messages
-				    (object Message "[if password is correct] show user_interface()"
-					quid       	"5DD017C202D3"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"4"
-					ordinal    	3
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			class      	"Logical View::org::omg::CosNaming::_BindingIteratorImplBase"
-			quidu      	"39CD74F4014E"
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "User_data_base_controller"
-			quid       	"5DD0163F02C0"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5DD016D3010B"
-				supplier   	"User_data_base"
-				quidu      	"5DD0167D03AE"
-				messages   	(list Messages
-				    (object Message "Get_user_data()"
-					quid       	"5DD016D3010C"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"2"
-					ordinal    	1
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "User_data_base"
-			quid       	"5DD0167D03AE"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5DD016FA02CA"
-				supplier   	"interface: login_interface"
-				quidu      	"5DD0162C0365"
-				messages   	(list Messages
-				    (object Message "senf_user_data()"
-					quid       	"5DD016FA02CB"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"3"
-					ordinal    	2
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "interface: user_interface"
-			quid       	"5DD0174200BE"
-			persistence 	"Transient"
-			creationObj 	FALSE
-			multi      	FALSE)))
-	    (object Mechanism @3
-		logical_models 	(list unit_reference_list
-		    (object Object "Interface: recipe_interface"
-			quid       	"5DD43FA70351"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5DD43FA70352"
-				supplier   	"Recipe_data_base_controller"
-				quidu      	"5DD43FA70357"
-				messages   	(list Messages
-				    (object Message "add_recipe(name, ingridients, equipment, technique, instruction, category, level)"
-					quid       	"5DD43FA70353"
+				    (object Message "AddToFavorites()"
+					quid       	"5DE6B7880077"
 					frequency  	"Aperiodic"
 					synchronization 	"Simple"
 					dir        	"FromClientToSupplier"
@@ -622,213 +103,155 @@
 			persistence 	"Transient"
 			creationObj 	FALSE
 			multi      	FALSE)
-		    (object Object "Recipe_data_base_controller"
-			quid       	"5DD43FA70357"
+		    (object Object "FavoritesDataBaseController"
+			quid       	"5DE6B7360229"
 			collaborators 	(list link_list
 			    (object Link
-				quid       	"5DD43FA70358"
-				supplier   	"Recipe_data_base_controller"
-				quidu      	"5DD43FA70357"
+				quid       	"5DE6B7D0038F"
+				supplier   	"FavoritesDataBase"
+				quidu      	"5DE6B79E0391"
 				messages   	(list Messages
-				    (object Message "Create_recipe(name, ingridients, equipment, technique, instruction, category, level)"
-					quid       	"5DD43FA70359"
+				    (object Message "AddToFavorites()"
+					quid       	"5DE6B7D00390"
 					frequency  	"Aperiodic"
 					synchronization 	"Simple"
 					dir        	"FromClientToSupplier"
 					sequence   	"2"
 					ordinal    	1
 					quidu      	"000000000000"
-					creation   	FALSE)))
+					creation   	FALSE))))
+			persistence 	"Transient"
+			creationObj 	FALSE
+			multi      	FALSE)
+		    (object Object "FavoritesDataBase"
+			quid       	"5DE6B79E0391"
+			collaborators 	(list link_list
 			    (object Link
-				quid       	"5DD43FA7035B"
-				supplier   	"Recipe_data_base"
-				quidu      	"5DD43FA70363"
+				quid       	"5DE6B7FB01C1"
+				supplier   	"FavoritesDataBase"
+				quidu      	"5DE6B79E0391"
 				messages   	(list Messages
-				    (object Message "add_to_database()"
-					quid       	"5DD43FA7035C"
+				    (object Message "[IfPresent] addToFavorites"
+					quid       	"5DE6B7FB01C2"
 					frequency  	"Aperiodic"
 					synchronization 	"Simple"
 					dir        	"FromClientToSupplier"
 					sequence   	"3"
 					ordinal    	2
 					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "*[is successfull] report_success() : boolean"
-					quid       	"5DD43FA7035E"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"ToClientFromSupplier"
-					sequence   	"4"
-					ordinal    	3
-					quidu      	"000000000000"
 					creation   	FALSE))))
 			persistence 	"Transient"
 			creationObj 	FALSE
-			multi      	FALSE)
-		    (object Object "Recipe_data_base"
-			quid       	"5DD43FA70363"
-			persistence 	"Transient"
-			creationObj 	TRUE
 			multi      	FALSE))))
 	statemachine 	(object State_Machine "State/Activity Model"
-	    quid       	"5DD013DF0108"
+	    quid       	"5DE6B834000C"
 	    states     	(list States
-		(object State "$UNNAMED$39"
-		    quid       	"5DD01404036D"
+		(object State "$UNNAMED$0"
+		    quid       	"5DE6B84A0343"
 		    type       	"StartState")
-		(object State "Getting Login"
-		    quid       	"5DD01412030F"
+		(object State "Sending Add To Favorites Request"
+		    quid       	"5DE6B86500EA"
 		    type       	"Normal")
-		(object State "Getting Password"
-		    quid       	"5DD01463016A"
+		(object State "Checking Is the Recipe Present In Favorites"
+		    quid       	"5DE6B8A4028B"
 		    type       	"Normal")
-		(object State "Validation"
-		    quid       	"5DD014D002BF"
-		    type       	"Normal")
-		(object State "$UNNAMED$40"
-		    quid       	"5DD0150D00F6"
+		(object State "$UNNAMED$1"
+		    quid       	"5DE6B8DE01D9"
 		    type       	"EndState")
-		(object State "Rejected"
-		    quid       	"5DD0152C0077"
+		(object State "Adding To Favorites Data Base"
+		    quid       	"5DE6B8E80073"
 		    type       	"Normal")
-		(object State "$UNNAMED$41"
-		    quid       	"5DD01573002F"
+		(object State "$UNNAMED$2"
+		    quid       	"5DE6B9100291"
 		    type       	"EndState")
-		(object State "login/password validation"
-		    quid       	"5DD019720041"
+		(object State "Display Notification that recipe is present"
+		    quid       	"5DE6B91601FB"
 		    type       	"Normal"))
 	    partitions 	(list Partitions)
 	    objects    	(list Objects)
 	    transitions 	(list transition_list
 		(object State_Transition
-		    quid       	"5DD014760062"
+		    quid       	"5DE6B88300C7"
 		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Getting Password"
-		    supplier_quidu 	"5DD01463016A"
-		    client     	"Use Case View::State/Activity Model::Getting Login"
-		    client_quidu 	"5DD01412030F"
-		    Event      	(object Event "press TAB ore move curdor to password field"
-			quid       	"5DD014760063")
+		    supplier   	"Use Case View::State/Activity Model::Sending Add To Favorites Request"
+		    supplier_quidu 	"5DE6B86500EA"
+		    client     	"$UNNAMED$0"
+		    client_quidu 	"5DE6B84A0343"
+		    Event      	(object Event "Add To Favorites Button Clicked"
+			quid       	"5DE6B88300C8")
 		    sendEvent  	(object sendEvent
-			quid       	"5DD014760065"))
+			quid       	"5DE6B88300CA"))
 		(object State_Transition
-		    quid       	"5DD014A400F3"
+		    quid       	"5DE6B8C501F7"
 		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Getting Login"
-		    supplier_quidu 	"5DD01412030F"
-		    client     	"$UNNAMED$39"
-		    client_quidu 	"5DD01404036D"
-		    Event      	(object Event "Cursor to login field"
-			quid       	"5DD014A400F4")
+		    supplier   	"Use Case View::State/Activity Model::Checking Is the Recipe Present In Favorites"
+		    supplier_quidu 	"5DE6B8A4028B"
+		    client     	"Use Case View::State/Activity Model::Sending Add To Favorites Request"
+		    client_quidu 	"5DE6B86500EA"
+		    Event      	(object Event "Request Sending Compleete"
+			quid       	"5DE6B8C501F8")
 		    sendEvent  	(object sendEvent
-			quid       	"5DD014A400F6"))
+			quid       	"5DE6B8C501FA"))
 		(object State_Transition
-		    quid       	"5DD014E0012A"
+		    quid       	"5DE6B8F80288"
 		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Validation"
-		    supplier_quidu 	"5DD014D002BF"
-		    client     	"Use Case View::State/Activity Model::Getting Password"
-		    client_quidu 	"5DD01463016A"
-		    Event      	(object Event "submitting"
-			quid       	"5DD014E0012B")
+		    supplier   	"Use Case View::State/Activity Model::Adding To Favorites Data Base"
+		    supplier_quidu 	"5DE6B8E80073"
+		    client     	"Use Case View::State/Activity Model::Checking Is the Recipe Present In Favorites"
+		    client_quidu 	"5DE6B8A4028B"
+		    Event      	(object Event "Accepted"
+			quid       	"5DE6B8F80289")
 		    sendEvent  	(object sendEvent
-			quid       	"5DD014E0012D"))
+			quid       	"5DE6B8F8028B"))
 		(object State_Transition
-		    quid       	"5DD01511008B"
+		    quid       	"5DE6B90502F9"
 		    label      	""
-		    supplier   	"$UNNAMED$40"
-		    supplier_quidu 	"5DD0150D00F6"
-		    client     	"Use Case View::State/Activity Model::Validation"
-		    client_quidu 	"5DD014D002BF"
-		    Event      	(object Event "[valid] save to database"
-			quid       	"5DD01511008C")
+		    supplier   	"$UNNAMED$1"
+		    supplier_quidu 	"5DE6B8DE01D9"
+		    client     	"Use Case View::State/Activity Model::Adding To Favorites Data Base"
+		    client_quidu 	"5DE6B8E80073"
+		    Event      	(object Event "Finished"
+			quid       	"5DE6B90502FA")
 		    sendEvent  	(object sendEvent
-			quid       	"5DD01511008E"))
+			quid       	"5DE6B90502FC"))
 		(object State_Transition
-		    quid       	"5DD01535001B"
+		    quid       	"5DE6B92D022F"
 		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Rejected"
-		    supplier_quidu 	"5DD0152C0077"
-		    client     	"Use Case View::State/Activity Model::Validation"
-		    client_quidu 	"5DD014D002BF"
-		    Event      	(object Event "unable to save"
-			quid       	"5DD01535001C")
+		    supplier   	"Use Case View::State/Activity Model::Display Notification that recipe is present"
+		    supplier_quidu 	"5DE6B91601FB"
+		    client     	"Use Case View::State/Activity Model::Checking Is the Recipe Present In Favorites"
+		    client_quidu 	"5DE6B8A4028B"
+		    Event      	(object Event "Rejected"
+			quid       	"5DE6B92D0230")
 		    sendEvent  	(object sendEvent
-			quid       	"5DD01535001E"))
+			quid       	"5DE6B92D0232"))
 		(object State_Transition
-		    quid       	"5DD0156101C3"
-		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Getting Login"
-		    supplier_quidu 	"5DD01412030F"
-		    client     	"Use Case View::State/Activity Model::Rejected"
-		    client_quidu 	"5DD0152C0077"
-		    Event      	(object Event "retry"
-			quid       	"5DD0156101C4")
+		    quid       	"5DE6B9400227"
+		    supplier   	"$UNNAMED$2"
+		    supplier_quidu 	"5DE6B9100291"
+		    client     	"Use Case View::State/Activity Model::Display Notification that recipe is present"
+		    client_quidu 	"5DE6B91601FB"
 		    sendEvent  	(object sendEvent
-			quid       	"5DD0156101C6"))
-		(object State_Transition
-		    quid       	"5DD015770123"
-		    label      	""
-		    supplier   	"$UNNAMED$41"
-		    supplier_quidu 	"5DD01573002F"
-		    client     	"Use Case View::State/Activity Model::Rejected"
-		    client_quidu 	"5DD0152C0077"
-		    Event      	(object Event "Cancell"
-			quid       	"5DD015770124")
-		    sendEvent  	(object sendEvent
-			quid       	"5DD015770126"))
-		(object State_Transition
-		    quid       	"5DD0198B02A3"
-		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::login/password validation"
-		    supplier_quidu 	"5DD019720041"
-		    client     	"Use Case View::State/Activity Model::Getting Password"
-		    client_quidu 	"5DD01463016A"
-		    Event      	(object Event "submit"
-			quid       	"5DD0198B02A4")
-		    sendEvent  	(object sendEvent
-			quid       	"5DD0198B02A6"))
-		(object State_Transition
-		    quid       	"5DD0199702D4"
-		    label      	""
-		    supplier   	"$UNNAMED$40"
-		    supplier_quidu 	"5DD0150D00F6"
-		    client     	"Use Case View::State/Activity Model::login/password validation"
-		    client_quidu 	"5DD019720041"
-		    Event      	(object Event "[valid] show user interface"
-			quid       	"5DD0199702D5")
-		    sendEvent  	(object sendEvent
-			quid       	"5DD0199702D7"))
-		(object State_Transition
-		    quid       	"5DD019B1009B"
-		    label      	""
-		    supplier   	"Use Case View::State/Activity Model::Rejected"
-		    supplier_quidu 	"5DD0152C0077"
-		    client     	"Use Case View::State/Activity Model::login/password validation"
-		    client_quidu 	"5DD019720041"
-		    Event      	(object Event "[not valid] display error massage"
-			quid       	"5DD019B1009C")
-		    sendEvent  	(object sendEvent
-			quid       	"5DD019B1009E")))
+			quid       	"5DE6B940022A")))
 	    objectflows 	(list objectflow_list)
 	    statediagrams 	(list StateDiagrams
-		(object State_Diagram "add_user"
-		    quid       	"5DD013DF010F"
-		    title      	"add_user"
+		(object State_Diagram "AddToFavorites"
+		    quid       	"5DE6B8340013"
+		    title      	"AddToFavorites"
 		    zoom       	100
 		    max_height 	28350
 		    max_width  	21600
 		    origin_x   	0
 		    origin_y   	0
 		    items      	(list diagram_item_list
-			(object StateView "StartState" "$UNNAMED$39" @4
-			    location   	(192, 80)
+			(object StateView "StartState" "$UNNAMED$0" @3
+			    location   	(144, 112)
 			    icon_style 	"Icon"
 			    line_color 	3342489
-			    quidu      	"5DD01404036D"
+			    quidu      	"5DE6B84A0343"
 			    autoResize 	TRUE)
-			(object StateView "Normal" "Getting Login" @5
-			    location   	(1136, 288)
+			(object StateView "Normal" "Sending Add To Favorites Request" @4
+			    location   	(976, 352)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -840,23 +263,65 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
+				Parent_View 	@4
+				location   	(976, 341)
+				fill_color 	13434879
+				anchor_loc 	1
+				nlines     	2
+				max_width  	344
+				justify    	0
+				label      	"Sending Add To Favorites Request")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"5DE6B86500EA"
+			    width      	440
+			    height     	134
+			    autoResize 	TRUE)
+			(object TransView "" @5
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				charSet    	204
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    label      	(object SegLabel @6
 				Parent_View 	@5
-				location   	(1136, 277)
-				fill_color 	13434879
+				location   	(791, 131)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    charSet    	204
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
 				anchor_loc 	1
-				nlines     	2
-				max_width  	276
+				nlines     	1
+				max_width  	627
 				justify    	0
-				label      	"Getting Login")
-			    icon_style 	"Icon"
+				label      	"Add To Favorites Button Clicked"
+				pctDist    	0.984059
+				height     	161
+				orientation 	0)
+			    stereotype 	TRUE
 			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5DD01412030F"
-			    width      	372
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "Normal" "Getting Password" @6
-			    location   	(1136, 720)
+			    quidu      	"5DE6B88300C7"
+			    client     	@3
+			    supplier   	@4
+			    vertices   	(list Points
+				(174, 120)
+				(756, 288))
+			    line_style 	0
+			    x_offset   	FALSE)
+			(object StateView "Normal" "Checking Is the Recipe Present In Favorites" @7
+			    location   	(1136, 704)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -868,21 +333,22 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@6
-				location   	(1136, 709)
+				Parent_View 	@7
+				location   	(1136, 693)
 				fill_color 	13434879
 				anchor_loc 	1
 				nlines     	2
-				max_width  	204
+				max_width  	416
 				justify    	0
-				label      	"Getting Password")
+				label      	"Checking Is the Recipe Present In Favorites")
 			    icon_style 	"Icon"
 			    line_color 	3342489
 			    fill_color 	13434879
-			    quidu      	"5DD01463016A"
+			    quidu      	"5DE6B8A4028B"
+			    width      	512
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @7
+			(object TransView "" @8
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -893,9 +359,9 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    label      	(object SegLabel @8
-				Parent_View 	@7
-				location   	(1188, 548)
+			    label      	(object SegLabel @9
+				Parent_View 	@8
+				location   	(1325, 523)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -908,66 +374,30 @@
 				    default_color 	TRUE)
 				anchor_loc 	1
 				nlines     	1
-				max_width  	805
+				max_width  	531
 				justify    	0
-				label      	"press TAB ore move curdor to password field"
-				pctDist    	0.649114
-				height     	52
+				label      	"Request Sending Compleete"
+				pctDist    	0.950214
+				height     	247
 				orientation 	0)
 			    stereotype 	TRUE
 			    line_color 	3342489
-			    quidu      	"5DD014760062"
-			    client     	@5
-			    supplier   	@6
-			    vertices   	(list Points
-				(1136, 355)
-				(1136, 653))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @9
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @10
-				Parent_View 	@9
-				location   	(596, 124)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"Cursor to login field"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD014A400F3"
+			    quidu      	"5DE6B8C501F7"
 			    client     	@4
-			    supplier   	@5
+			    supplier   	@7
 			    vertices   	(list Points
-				(222, 86)
-				(950, 247))
+				(1006, 418)
+				(1105, 636))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "Normal" "Validation" @11
-			    location   	(544, 816)
+			(object StateView "EndState" "$UNNAMED$1" @10
+			    location   	(96, 448)
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    quidu      	"5DE6B8DE01D9"
+			    autoResize 	TRUE)
+			(object StateView "Normal" "Adding To Favorites Data Base" @11
+			    location   	(480, 560)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -980,17 +410,18 @@
 				default_color 	TRUE)
 			    label      	(object ItemLabel
 				Parent_View 	@11
-				location   	(544, 805)
+				location   	(480, 549)
 				fill_color 	13434879
 				anchor_loc 	1
 				nlines     	2
-				max_width  	204
+				max_width  	372
 				justify    	0
-				label      	"Validation")
+				label      	"Adding To Favorites Data Base")
 			    icon_style 	"Icon"
 			    line_color 	3342489
 			    fill_color 	13434879
-			    quidu      	"5DD014D002BF"
+			    quidu      	"5DE6B8E80073"
+			    width      	468
 			    height     	134
 			    autoResize 	TRUE)
 			(object TransView "" @12
@@ -1006,7 +437,7 @@
 				default_color 	TRUE)
 			    label      	(object SegLabel @13
 				Parent_View 	@12
-				location   	(879, 853)
+				location   	(758, 673)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -1021,27 +452,21 @@
 				nlines     	1
 				max_width  	450
 				justify    	0
-				label      	"submitting"
-				pctDist    	0.420439
-				height     	90
+				label      	"Accepted"
+				pctDist    	0.669486
+				height     	51
 				orientation 	0)
 			    stereotype 	TRUE
 			    line_color 	3342489
-			    quidu      	"5DD014E0012A"
-			    client     	@6
+			    quidu      	"5DE6B8F80288"
+			    client     	@7
 			    supplier   	@11
 			    vertices   	(list Points
-				(986, 744)
-				(694, 791))
+				(880, 647)
+				(714, 611))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "EndState" "$UNNAMED$40" @14
-			    location   	(64, 704)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5DD0150D00F6"
-			    autoResize 	TRUE)
-			(object TransView "" @15
+			(object TransView "" @14
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1052,9 +477,9 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    label      	(object SegLabel @16
-				Parent_View 	@15
-				location   	(386, 912)
+			    label      	(object SegLabel @15
+				Parent_View 	@14
+				location   	(259, 406)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -1067,24 +492,30 @@
 				    default_color 	TRUE)
 				anchor_loc 	1
 				nlines     	1
-				max_width  	560
+				max_width  	450
 				justify    	0
-				label      	"[valid] save to database"
-				pctDist    	-0.072007
-				height     	130
-				orientation 	0)
+				label      	"Finished"
+				pctDist    	0.097505
+				height     	85
+				orientation 	1)
 			    stereotype 	TRUE
 			    line_color 	3342489
-			    quidu      	"5DD01511008B"
+			    quidu      	"5DE6B90502F9"
 			    client     	@11
-			    supplier   	@14
+			    supplier   	@10
 			    vertices   	(list Points
-				(394, 780)
-				(106, 713))
+				(246, 491)
+				(138, 460))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "Normal" "Rejected" @17
-			    location   	(384, 400)
+			(object StateView "EndState" "$UNNAMED$2" @16
+			    location   	(144, 720)
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    quidu      	"5DE6B9100291"
+			    autoResize 	TRUE)
+			(object StateView "Normal" "Display Notification that recipe is present" @17
+			    location   	(496, 1008)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1097,17 +528,18 @@
 				default_color 	TRUE)
 			    label      	(object ItemLabel
 				Parent_View 	@17
-				location   	(384, 389)
+				location   	(496, 997)
 				fill_color 	13434879
 				anchor_loc 	1
 				nlines     	2
-				max_width  	204
+				max_width  	418
 				justify    	0
-				label      	"Rejected")
+				label      	"Display Notification that recipe is present")
 			    icon_style 	"Icon"
 			    line_color 	3342489
 			    fill_color 	13434879
-			    quidu      	"5DD0152C0077"
+			    quidu      	"5DE6B91601FB"
+			    width      	514
 			    height     	134
 			    autoResize 	TRUE)
 			(object TransView "" @18
@@ -1123,7 +555,7 @@
 				default_color 	TRUE)
 			    label      	(object SegLabel @19
 				Parent_View 	@18
-				location   	(423, 623)
+				location   	(834, 897)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -1136,541 +568,31 @@
 				    default_color 	TRUE)
 				anchor_loc 	1
 				nlines     	1
-				max_width  	509
+				max_width  	450
 				justify    	0
-				label      	"unable to save"
+				label      	"Rejected"
 				pctDist    	0.500000
 				height     	45
 				orientation 	0)
 			    stereotype 	TRUE
 			    line_color 	3342489
-			    quidu      	"5DD01535001B"
-			    client     	@11
+			    quidu      	"5DE6B92D022F"
+			    client     	@7
 			    supplier   	@17
 			    vertices   	(list Points
-				(518, 748)
-				(409, 466))
+				(994, 771)
+				(637, 940))
 			    line_style 	0
 			    x_offset   	FALSE)
 			(object TransView "" @20
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @21
-				Parent_View 	@20
-				location   	(736, 302)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"retry"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
 			    stereotype 	TRUE
 			    line_color 	3342489
-			    quidu      	"5DD0156101C3"
+			    quidu      	"5DE6B9400227"
 			    client     	@17
-			    supplier   	@5
+			    supplier   	@16
 			    vertices   	(list Points
-				(534, 377)
-				(950, 315))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object StateView "EndState" "$UNNAMED$41" @22
-			    location   	(48, 384)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5DD01573002F"
-			    autoResize 	TRUE)
-			(object TransView "" @23
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @24
-				Parent_View 	@23
-				location   	(161, 434)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"Cancell"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD015770123"
-			    client     	@17
-			    supplier   	@22
-			    vertices   	(list Points
-				(234, 392)
-				(90, 386))
-			    line_style 	0
-			    x_offset   	FALSE)))
-		(object State_Diagram "log_in"
-		    quid       	"5DD0189E019C"
-		    title      	"log_in"
-		    zoom       	100
-		    max_height 	28350
-		    max_width  	21600
-		    origin_x   	0
-		    origin_y   	0
-		    items      	(list diagram_item_list
-			(object StateView "StartState" "$UNNAMED$39" @25
-			    location   	(192, 80)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5DD01404036D"
-			    autoResize 	TRUE)
-			(object StateView "Normal" "Getting Login" @26
-			    location   	(1136, 288)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@26
-				location   	(1136, 277)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	276
-				justify    	0
-				label      	"Getting Login")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5DD01412030F"
-			    width      	372
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "Normal" "Getting Password" @27
-			    location   	(1136, 720)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@27
-				location   	(1136, 709)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"Getting Password")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5DD01463016A"
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "EndState" "$UNNAMED$40" @28
-			    location   	(48, 896)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5DD0150D00F6"
-			    autoResize 	TRUE)
-			(object StateView "Normal" "Rejected" @29
-			    location   	(384, 400)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@29
-				location   	(384, 389)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"Rejected")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5DD0152C0077"
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "EndState" "$UNNAMED$41" @30
-			    location   	(48, 384)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5DD01573002F"
-			    autoResize 	TRUE)
-			(object TransView "" @31
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @32
-				Parent_View 	@31
-				location   	(596, 124)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"Cursor to login field"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD014A400F3"
-			    client     	@25
-			    supplier   	@26
-			    vertices   	(list Points
-				(222, 86)
-				(950, 247))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @33
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @34
-				Parent_View 	@33
-				location   	(1188, 548)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	805
-				justify    	0
-				label      	"press TAB ore move curdor to password field"
-				pctDist    	0.649114
-				height     	52
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD014760062"
-			    client     	@26
-			    supplier   	@27
-			    vertices   	(list Points
-				(1136, 355)
-				(1136, 653))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @35
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @36
-				Parent_View 	@35
-				location   	(736, 302)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"retry"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD0156101C3"
-			    client     	@29
-			    supplier   	@26
-			    vertices   	(list Points
-				(534, 377)
-				(950, 315))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @37
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @38
-				Parent_View 	@37
-				location   	(161, 434)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"Cancell"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD015770123"
-			    client     	@29
-			    supplier   	@30
-			    vertices   	(list Points
-				(234, 392)
-				(90, 386))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object StateView "Normal" "login/password validation" @39
-			    location   	(528, 864)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@39
-				location   	(528, 853)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	276
-				justify    	0
-				label      	"login/password validation")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5DD019720041"
-			    width      	372
-			    height     	134
-			    autoResize 	TRUE)
-			(object TransView "" @40
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @41
-				Parent_View 	@40
-				location   	(860, 831)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	450
-				justify    	0
-				label      	"submit"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD0198B02A3"
-			    client     	@27
-			    supplier   	@39
-			    vertices   	(list Points
-				(986, 755)
-				(714, 819))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @42
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @43
-				Parent_View 	@42
-				location   	(270, 992)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	518
-				justify    	0
-				label      	"[valid] show user interface"
-				pctDist    	0.315332
-				height     	111
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD0199702D4"
-			    client     	@39
-			    supplier   	@28
-			    vertices   	(list Points
-				(342, 876)
-				(90, 893))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @44
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @45
-				Parent_View 	@44
-				location   	(413, 644)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    charSet    	204
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				anchor_loc 	1
-				nlines     	1
-				max_width  	594
-				justify    	0
-				label      	"[not valid] display error massage"
-				pctDist    	0.500000
-				height     	45
-				orientation 	0)
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5DD019B1009B"
-			    client     	@39
-			    supplier   	@29
-			    vertices   	(list Points
-				(507, 796)
-				(404, 466))
+				(414, 941)
+				(186, 754))
 			    line_style 	0
 			    x_offset   	FALSE)))))
 	logical_presentations 	(list unit_reference_list
@@ -1682,1164 +604,112 @@
 		max_width  	21600
 		origin_x   	0
 		origin_y   	0
-		items      	(list diagram_item_list
-		    (object UseCaseView "Use Case View::Обрати Тип страви" @46
-			location   	(896, 896)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@46
-			    location   	(896, 1034)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Обрати Тип страви")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFCA1F02DC"
-			height     	118)
-		    (object UseCaseView "Use Case View::Переглянути Рівень" @47
-			location   	(880, 1408)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@47
-			    location   	(880, 1546)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Переглянути Рівень")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFCADE02DC"
-			height     	118)
-		    (object ClassView "Class" "Use Case View::Студент" @48
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(240, 992)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@48
-			    location   	(240, 1152)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	325
-			    justify    	0
-			    label      	"Студент")
-			icon       	"Actor"
-			icon_style 	"Icon"
-			line_color 	3342489
-			quidu      	"5DCFC9C802A5"
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$9" @49
-			location   	(540, 945)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB2500DE"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$10" @50
-				Parent_View 	@49
-				location   	(284, -63)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB3A01EA"
-				client     	@49
-				supplier   	@46
-				vertices   	(list Points
-				    (540, 945)
-				    (784, 910))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$11" @51
-				Parent_View 	@49
-				location   	(284, -63)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB3A01EC"
-				client     	@49
-				supplier   	@48
-				vertices   	(list Points
-				    (540, 945)
-				    (297, 980))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$15" @52
-			location   	(544, 1188)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB4403B7"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$16" @53
-				Parent_View 	@52
-				location   	(304, 196)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB450302"
-				client     	@52
-				supplier   	@47
-				vertices   	(list Points
-				    (544, 1188)
-				    (791, 1349))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$17" @54
-				Parent_View 	@52
-				location   	(304, 196)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB450304"
-				client     	@52
-				supplier   	@48
-				vertices   	(list Points
-				    (544, 1188)
-				    (297, 1028))
-				line_style 	0)))
-		    (object UseCaseView "Use Case View::Зареєструватися" @55
-			location   	(880, 336)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@55
-			    location   	(880, 474)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Зареєструватися")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFCA0A00E7"
-			height     	118)
-		    (object UseCaseView "Use Case View::Переглянути Промо Ролик" @56
-			location   	(880, 624)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@56
-			    location   	(880, 762)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Переглянути Промо Ролик")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFCA80022D"
-			height     	118)
-		    (object UseCaseView "Use Case View::Уввійти у систему" @57
-			location   	(880, 96)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@57
-			    location   	(880, 234)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Уввійти у систему")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFC9FC01DC"
-			height     	118)
-		    (object ClassView "Class" "Use Case View::Неавторизований Кориистувач" @58
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(240, 320)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@58
-			    location   	(240, 480)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	325
-			    justify    	0
-			    label      	"Неавторизований Кориистувач")
-			icon       	"Actor"
-			icon_style 	"Icon"
-			line_color 	3342489
-			quidu      	"5DCFCA57021D"
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$3" @59
-			location   	(533, 325)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB0C028E"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$4" @60
-				Parent_View 	@59
-				location   	(261, -379)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB0D0269"
-				client     	@59
-				supplier   	@55
-				vertices   	(list Points
-				    (533, 325)
-				    (770, 331))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$5" @61
-				Parent_View 	@59
-				location   	(261, -379)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB0D026B"
-				client     	@59
-				supplier   	@58
-				vertices   	(list Points
-				    (533, 325)
-				    (297, 320))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$12" @62
-			location   	(533, 458)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB3F00D5"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$13" @63
-				Parent_View 	@62
-				location   	(293, 138)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB3F03DA"
-				client     	@62
-				supplier   	@56
-				vertices   	(list Points
-				    (533, 458)
-				    (770, 570))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$14" @64
-				Parent_View 	@62
-				location   	(293, 138)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB3F03DC"
-				client     	@62
-				supplier   	@58
-				vertices   	(list Points
-				    (533, 458)
-				    (297, 346))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$18" @65
-			location   	(505, 223)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB520224"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$19" @66
-				Parent_View 	@65
-				location   	(265, -97)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB53009A"
-				client     	@65
-				supplier   	@57
-				vertices   	(list Points
-				    (505, 223)
-				    (713, 151))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$20" @67
-				Parent_View 	@65
-				location   	(265, -97)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB53009C"
-				client     	@65
-				supplier   	@58
-				vertices   	(list Points
-				    (505, 223)
-				    (297, 296))
-				line_style 	0)))
-		    (object UseCaseView "Use Case View::Додати Новий Рецепт" @68
-			location   	(880, 1136)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@68
-			    location   	(880, 1274)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	630
-			    justify    	0
-			    label      	"Додати Новий Рецепт")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DCFCA960014"
-			height     	118)
-		    (object ClassView "Class" "Use Case View::Викладач" @69
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1504, 672)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@69
-			    location   	(1504, 832)
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	325
-			    justify    	0
-			    label      	"Викладач")
-			icon       	"Actor"
-			icon_style 	"Icon"
-			line_color 	3342489
-			quidu      	"5DCFCAF201CF"
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$21" @70
-			location   	(1198, 894)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DCFCB5A0126"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$22" @71
-				Parent_View 	@70
-				location   	(-306, 222)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB5B03CA"
-				client     	@70
-				supplier   	@68
-				vertices   	(list Points
-				    (1198, 894)
-				    (951, 1077))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$23" @72
-				Parent_View 	@70
-				location   	(-306, 222)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DCFCB5B03CC"
-				client     	@70
-				supplier   	@69
-				vertices   	(list Points
-				    (1198, 894)
-				    (1445, 711))
-				line_style 	0)))))
-	    (object ClassDiagram "User classes"
-		quid       	"5DCFCBCF0397"
-		title      	"User classes"
+		items      	(list diagram_item_list))
+	    (object ObjectDiagram "Favorites"
+		mechanism_ref 	@1
+		quid       	"5DE6B6D20006"
+		title      	"Favorites"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))
+	    (object InteractionDiagram "Add_to_Favorites"
+		mechanism_ref 	@2
+		quid       	"5DE6B6E5013D"
+		title      	"Add_to_Favorites"
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Use Case View::BaseUser" @73
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(592, 1408)
+		    (object InterObjView "Interface: UserInterface" @21
+			location   	(176, 224)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
 			    charSet    	204
 			    bold       	FALSE
 			    italics    	FALSE
-			    underline  	FALSE
+			    underline  	TRUE
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@73
-			    location   	(358, 1230)
+			    Parent_View 	@21
+			    location   	(176, 224)
 			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	469
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	282
 			    justify    	0
-			    label      	"BaseUser")
+			    label      	"Interface: UserInterface")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DCFCC1503E7"
-			compartment 	(object Compartment
-			    Parent_View 	@73
-			    location   	(358, 1291)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	6
-			    max_width  	368
-			    justify    	1)
-			width      	487
-			height     	381
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::recipe" @74
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(2160, 272)
+			quidu      	"5DE6B6F0030A"
+			width      	300
+			height     	708
+			icon_height 	0
+			icon_width 	0
+			icon_y_offset 	0
+			annotation 	1
+			Focus_Of_Control 	(object Focus_Of_Control "" @22
+			    location   	(176, 384)
+			    line_color 	3342489
+			    InterObjView 	@21
+			    height     	90
+			    y_coord    	0
+			    Nested     	FALSE))
+		    (object InterObjView "FavoritesDataBaseController" @23
+			location   	(592, 224)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
 			    charSet    	204
 			    bold       	FALSE
 			    italics    	FALSE
-			    underline  	FALSE
+			    underline  	TRUE
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@74
-			    location   	(1951, 41)
+			    Parent_View 	@23
+			    location   	(592, 224)
 			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	418
-			    justify    	0
-			    label      	"recipe")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43ABF0109"
-			compartment 	(object Compartment
-			    Parent_View 	@74
-			    location   	(1951, 102)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	8
-			    max_width  	440
-			    justify    	1)
-			width      	436
-			height     	486
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::Teacher" @75
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(384, 752)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@75
-			    location   	(244, 646)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	280
-			    justify    	0
-			    label      	"Teacher")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0068B0349"
-			compartment 	(object Compartment
-			    Parent_View 	@75
-			    location   	(244, 707)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	3
-			    max_width  	296
-			    justify    	1)
-			width      	298
-			height     	236
-			annotation 	8
-			autoResize 	TRUE)
-		    (object InheritView "" @76
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD0081E000B"
-			client     	@75
-			supplier   	@73
-			vertices   	(list Points
-			    (421, 870)
-			    (530, 1217))
-			line_style 	0)
-		    (object ClassView "Class" "Use Case View::Student" @77
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1040, 864)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@77
-			    location   	(900, 683)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	280
-			    justify    	0
-			    label      	"Student")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00722035E"
-			compartment 	(object Compartment
-			    Parent_View 	@77
-			    location   	(900, 744)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	6
-			    max_width  	278
-			    justify    	1)
-			width      	298
-			height     	386
-			annotation 	8
-			autoResize 	TRUE)
-		    (object InheritView "" @78
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD0082502FB"
-			client     	@77
-			supplier   	@73
-			vertices   	(list Points
-			    (890, 1045)
-			    (748, 1217))
-			line_style 	0)
-		    (object ClassView "Class" "Use Case View::user_data_base_controler" @79
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(384, 176)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@79
-			    location   	(136, 70)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	496
-			    justify    	0
-			    label      	"user_data_base_controler")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0083E00AF"
-			compartment 	(object Compartment
-			    Parent_View 	@79
-			    location   	(136, 131)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	3
-			    max_width  	262
-			    justify    	1)
-			width      	514
-			height     	236
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::recipe_editor" @80
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1616, 176)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@80
-			    location   	(1416, 45)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	400
-			    justify    	0
-			    label      	"recipe_editor")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43AAD0178"
-			compartment 	(object Compartment
-			    Parent_View 	@80
-			    location   	(1416, 106)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	4
-			    max_width  	418
-			    justify    	1)
-			width      	418
-			height     	286
-			annotation 	8
-			autoResize 	TRUE)
-		    (object UsesView "" @81
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD43D4D0377"
-			client     	@74
-			supplier   	@80
-			vertices   	(list Points
-			    (1941, 233)
-			    (1825, 212))
-			line_style 	0)
-		    (object ClassView "Class" "Use Case View::FavoritesDataBaseController" @82
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1664, 832)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@82
-			    location   	(1392, 726)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	544
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	282
 			    justify    	0
 			    label      	"FavoritesDataBaseController")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DE6BC58006B"
-			compartment 	(object Compartment
-			    Parent_View 	@82
-			    location   	(1392, 787)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	3
-			    max_width  	359
-			    justify    	1)
-			width      	562
-			height     	236
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Use Case View::Interface" @83
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1120, 528)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@83
-			    location   	(1025, 477)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	190
-			    justify    	0
-			    label      	"Interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD008A70177"
-			width      	208
-			height     	126
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$24" @84
-			location   	(774, 632)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD008EE00FD"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$25" @85
-				Parent_View 	@84
-				location   	(134, -216)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD008EE034B"
-				client     	@84
-				supplier   	@83
-				vertices   	(list Points
-				    (774, 632)
-				    (1015, 559))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$26" @86
-				Parent_View 	@84
-				location   	(134, -216)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD008EE034D"
-				client     	@84
-				supplier   	@75
-				vertices   	(list Points
-				    (774, 632)
-				    (533, 706))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$27" @87
-			location   	(1095, 630)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD008F7017D"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$28" @88
-				Parent_View 	@87
-				location   	(-473, -218)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD008F80043"
-				client     	@87
-				supplier   	@83
-				vertices   	(list Points
-				    (1095, 630)
-				    (1105, 591))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$29" @89
-				Parent_View 	@87
-				location   	(-473, -218)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD008F80046"
-				client     	@87
-				supplier   	@77
-				vertices   	(list Points
-				    (1095, 630)
-				    (1085, 670))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$30" @90
-			location   	(823, 385)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD0090C00ED"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$31" @91
-				Parent_View 	@90
-				location   	(-297, -143)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD0090C039B"
-				client     	@90
-				supplier   	@79
-				vertices   	(list Points
-				    (823, 385)
-				    (631, 294))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$32" @92
-				Parent_View 	@90
-				location   	(-297, -143)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD0090C039E"
-				client     	@90
-				supplier   	@83
-				vertices   	(list Points
-				    (823, 385)
-				    (1015, 477))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$33" @93
-			location   	(1311, 391)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD43CF800EE"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$34" @94
-				Parent_View 	@93
-				location   	(-305, 215)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD43CF90309"
-				client     	@93
-				supplier   	@83
-				vertices   	(list Points
-				    (1311, 391)
-				    (1208, 464))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$35" @95
-				Parent_View 	@93
-				location   	(-305, 215)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DD43CF9030D"
-				client     	@93
-				supplier   	@80
-				vertices   	(list Points
-				    (1311, 391)
-				    (1414, 319))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$36" @96
-			location   	(1338, 649)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DE6BCDC0339"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$37" @97
-				Parent_View 	@96
-				location   	(-790, -247)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DE6BCDE0218"
-				client     	@96
-				supplier   	@83
-				vertices   	(list Points
-				    (1338, 649)
-				    (1224, 586))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$38" @98
-				Parent_View 	@96
-				location   	(-790, -247)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"5DE6BCDE021C"
-				client     	@96
-				supplier   	@82
-				vertices   	(list Points
-				    (1338, 649)
-				    (1452, 713))
-				line_style 	0)))
-		    (object UsesView "" @99
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DE6BCF502B9"
-			client     	@74
-			supplier   	@82
-			vertices   	(list Points
-			    (1943, 515)
-			    (1768, 713))
-			line_style 	0)))
-	    (object InteractionDiagram "add_user"
-		mechanism_ref 	@1
-		quid       	"5DD00D4A01B3"
-		title      	"add_user"
-		zoom       	100
-		max_height 	28350
-		max_width  	21600
-		origin_x   	0
-		origin_y   	0
-		items      	(list diagram_item_list
-		    (object InterObjView "Interface: login_interface" @100
-			location   	(176, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@100
-			    location   	(176, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	286
-			    justify    	0
-			    label      	"Interface: login_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00EB301FD"
-			width      	304
-			height     	867
+			quidu      	"5DE6B7360229"
+			width      	300
+			height     	708
 			icon_height 	0
 			icon_width 	0
 			icon_y_offset 	0
 			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @101
-			    location   	(176, 368)
+			Focus_Of_Control 	(object Focus_Of_Control "" @24
+			    location   	(592, 384)
 			    line_color 	3342489
-			    InterObjView 	@100
+			    InterObjView 	@23
+			    height     	90
+			    y_coord    	0
+			    Nested     	FALSE)
+			Focus_Of_Control 	(object Focus_Of_Control "" @25
+			    location   	(592, 544)
+			    line_color 	3342489
+			    InterObjView 	@23
 			    height     	90
 			    y_coord    	0
 			    Nested     	FALSE))
-		    (object InterObjView "User_data_base_controller" @102
-			location   	(608, 225)
+		    (object InterObjView "FavoritesDataBase" @26
+			location   	(960, 224)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -2851,772 +721,46 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@102
-			    location   	(608, 224)
+			    Parent_View 	@26
+			    location   	(960, 224)
 			    fill_color 	13434879
 			    anchor_loc 	1
 			    nlines     	2
 			    max_width  	282
 			    justify    	0
-			    label      	"User_data_base_controller")
+			    label      	"FavoritesDataBase")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DD00EFE01CD"
+			quidu      	"5DE6B79E0391"
 			width      	300
-			height     	867
+			height     	708
 			icon_height 	0
 			icon_width 	0
 			icon_y_offset 	0
 			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @103
-			    location   	(608, 368)
+			Focus_Of_Control 	(object Focus_Of_Control "" @27
+			    location   	(960, 544)
 			    line_color 	3342489
-			    InterObjView 	@102
+			    InterObjView 	@26
 			    height     	90
 			    y_coord    	0
 			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @104
-			    location   	(608, 560)
+			Focus_Of_Control 	(object Focus_Of_Control "" @28
+			    location   	(960, 720)
 			    line_color 	3342489
-			    InterObjView 	@102
+			    InterObjView 	@26
 			    height     	92
 			    y_coord    	2
 			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @105
-			    location   	(608, 585)
+			Focus_Of_Control 	(object Focus_Of_Control "" @29
+			    location   	(960, 752)
 			    line_color 	3342489
-			    InterObjView 	@102
+			    InterObjView 	@26
 			    height     	90
 			    y_coord    	0
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @106
-			    location   	(608, 752)
-			    line_color 	3342489
-			    InterObjView 	@102
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @107
-			    location   	(608, 912)
-			    line_color 	3342489
-			    InterObjView 	@102
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "User_data_base" @108
-			location   	(1376, 240)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@108
-			    location   	(1376, 240)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	282
-			    justify    	0
-			    label      	"User_data_base")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00FD103A6"
-			width      	300
-			height     	852
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @109
-			    location   	(1376, 320)
-			    line_color 	3342489
-			    InterObjView 	@108
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @110
-			    location   	(1376, 752)
-			    line_color 	3342489
-			    InterObjView 	@108
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @111
-			    location   	(1376, 912)
-			    line_color 	3342489
-			    InterObjView 	@108
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterMessView "add_user(logn, passwd)" @112
-			location   	(16, 368)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @113
-			    Parent_View 	@112
-			    location   	(391, 324)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00F69000C"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	423
-			    justify    	0
-			    label      	"add_user(logn, passwd)"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			line_color 	3342489
-			client     	@100
-			supplier   	@102
-			Focus_Src  	@101
-			Focus_Entry 	@103
-			origin     	(191, 368)
-			terminus   	(592, 368)
-			ordinal    	0)
-		    (object SelfMessView "Create_user(logn, passwd)" @114
-			location   	(16, 560)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @115
-			    Parent_View 	@114
-			    location   	(905, 518)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00FA80089"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	473
-			    justify    	0
-			    label      	"Create_user(logn, passwd)"
-			    pctDist    	1.873333
-			    height     	43
-			    orientation 	0)
-			line_color 	3342489
-			client     	@102
-			supplier   	@102
-			Focus_Src  	@104
-			Focus_Entry 	@105
-			origin     	(624, 560)
-			terminus   	(774, 560)
-			ordinal    	1)
-		    (object InterMessView "add_to_database()" @116
-			location   	(16, 752)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @117
-			    Parent_View 	@116
-			    location   	(991, 708)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00FDB02CC"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	332
-			    justify    	0
-			    label      	"add_to_database()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			line_color 	3342489
-			client     	@102
-			supplier   	@108
-			Focus_Src  	@106
-			Focus_Entry 	@110
-			origin     	(623, 752)
-			terminus   	(1360, 752)
-			ordinal    	2)
-		    (object InterMessView "*[is successfull] report_success() : boolean" @118
-			location   	(16, 912)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @119
-			    Parent_View 	@118
-			    location   	(992, 868)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD010130223"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	760
-			    justify    	0
-			    label      	"*[is successfull] report_success() : boolean"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	1)
-			line_color 	3342489
-			client     	@108
-			supplier   	@102
-			Focus_Src  	@111
-			Focus_Entry 	@107
-			origin     	(1360, 912)
-			terminus   	(624, 912)
-			ordinal    	3)))
-	    (object ObjectDiagram "add_user"
-		mechanism_ref 	@1
-		quid       	"5DD012D6024C"
-		title      	"add_user"
-		zoom       	100
-		max_height 	28350
-		max_width  	21600
-		origin_x   	0
-		origin_y   	0
-		items      	(list diagram_item_list
-		    (object ObjectView "Interface: login_interface" @120
-			location   	(209, 384)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@120
-			    location   	(63, 333)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	292
-			    justify    	0
-			    label      	"Interface: login_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00EB301FD"
-			width      	310
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object ObjectView "User_data_base_controller" @121
-			location   	(1328, 560)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@121
-			    location   	(1188, 509)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	280
-			    justify    	0
-			    label      	"User_data_base_controller")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00EFE01CD"
-			width      	298
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object ObjectView "User_data_base" @122
-			location   	(158, 928)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@122
-			    location   	(63, 877)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	190
-			    justify    	0
-			    label      	"User_data_base")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD00FD103A6"
-			width      	208
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object LinkSelfView "" @123
-			location   	(1328, 347)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD00FA80088"
-			client     	@121
-			supplier   	@121
-			vertices   	(list Points
-			    (1271, 497)
-			    (1385, 497))
-			line_style 	4)
-		    (object MessView "" @124
-			location   	(1328, 303)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @125
-			    Parent_View 	@124
-			    location   	(1328, 259)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00FA80089"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	509
-			    justify    	0
-			    label      	"Create_user(logn, passwd)"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@123
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(1268, 303)
-			terminus   	(1388, 303))
-		    (object LinkView "" @126
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD00F69000B"
-			client     	@120
-			supplier   	@121
-			vertices   	(list Points
-			    (364, 407)
-			    (1178, 535))
-			line_style 	0)
-		    (object MessView "" @127
-			location   	(778, 428)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @128
-			    Parent_View 	@127
-			    location   	(784, 385)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00F69000C"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	456
-			    justify    	0
-			    label      	"add_user(logn, passwd)"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@126
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(719, 419)
-			terminus   	(837, 437))
-		    (object LinkView "" @129
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD00FDB02CB"
-			client     	@121
-			supplier   	@122
-			vertices   	(list Points
-			    (1178, 606)
-			    (262, 894))
-			line_style 	0)
-		    (object MessView "" @130
-			location   	(733, 793)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @131
-			    Parent_View 	@130
-			    location   	(748, 851)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD00FDB02CC"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	450
-			    justify    	0
-			    label      	"add_to_database()"
-			    pctDist    	0.529480
-			    height     	60
-			    orientation 	0)
-			object_arc 	@129
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(789, 775)
-			terminus   	(677, 811))
-		    (object MessView "" @132
-			location   	(708, 708)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @133
-			    Parent_View 	@132
-			    location   	(553, 632)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD010130223"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	794
-			    justify    	0
-			    label      	"*[is successfull] report_success() : boolean"
-			    pctDist    	-0.565998
-			    height     	117
-			    orientation 	0)
-			object_arc 	@129
-			pctDist    	0.500000
-			height     	45
-			orientation 	1
-			dir        	-1
-			origin     	(651, 725)
-			terminus   	(765, 691))))
-	    (object InteractionDiagram "log in"
-		mechanism_ref 	@2
-		quid       	"5DD01618006C"
-		title      	"log in"
-		zoom       	100
-		max_height 	28350
-		max_width  	21600
-		origin_x   	0
-		origin_y   	0
-		items      	(list diagram_item_list
-		    (object InterObjView "interface: login_interface" @134
-			location   	(336, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@134
-			    location   	(336, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	590
-			    justify    	0
-			    label      	"interface: login_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0162C0365"
-			width      	608
-			height     	1059
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @135
-			    location   	(336, 384)
-			    line_color 	3342489
-			    InterObjView 	@134
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @136
-			    location   	(336, 720)
-			    line_color 	3342489
-			    InterObjView 	@134
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @137
-			    location   	(336, 1104)
-			    line_color 	3342489
-			    InterObjView 	@134
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "User_data_base_controller" @138
-			location   	(896, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@138
-			    location   	(896, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	363
-			    justify    	0
-			    label      	"User_data_base_controller")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0163F02C0"
-			width      	381
-			height     	1059
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @139
-			    location   	(896, 384)
-			    line_color 	3342489
-			    InterObjView 	@138
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @140
-			    location   	(896, 544)
-			    line_color 	3342489
-			    InterObjView 	@138
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "User_data_base" @141
-			location   	(1376, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@141
-			    location   	(1376, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	426
-			    justify    	0
-			    label      	"User_data_base")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0167D03AE"
-			width      	444
-			height     	1059
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @142
-			    location   	(1376, 544)
-			    line_color 	3342489
-			    InterObjView 	@141
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @143
-			    location   	(1376, 720)
-			    line_color 	3342489
-			    InterObjView 	@141
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "interface: user_interface" @144
-			location   	(1824, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@144
-			    location   	(1824, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	282
-			    justify    	0
-			    label      	"interface: user_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0174200BE"
-			width      	300
-			height     	1059
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @145
-			    location   	(1824, 1104)
-			    line_color 	3342489
-			    InterObjView 	@144
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterMessView "Check_Authentication()" @146
+			    Nested     	TRUE))
+		    (object InterMessView "AddToFavorites()" @30
 			location   	(16, 384)
 			font       	(object Font
 			    size       	10
@@ -3628,9 +772,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @147
-			    Parent_View 	@146
-			    location   	(615, 340)
+			label      	(object SegLabel @31
+			    Parent_View 	@30
+			    location   	(383, 340)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -3641,24 +785,24 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD016A700CB"
+			    quidu      	"5DE6B7880077"
 			    anchor_loc 	1
 			    nlines     	1
-			    max_width  	418
+			    max_width  	301
 			    justify    	0
-			    label      	"Check_Authentication()"
+			    label      	"AddToFavorites()"
 			    pctDist    	0.500000
 			    height     	45
 			    orientation 	0)
 			line_color 	3342489
-			client     	@134
-			supplier   	@138
-			Focus_Src  	@135
-			Focus_Entry 	@139
-			origin     	(351, 384)
-			terminus   	(880, 384)
+			client     	@21
+			supplier   	@23
+			Focus_Src  	@22
+			Focus_Entry 	@24
+			origin     	(191, 384)
+			terminus   	(576, 384)
 			ordinal    	0)
-		    (object InterMessView "Get_user_data()" @148
+		    (object InterMessView "AddToFavorites()" @32
 			location   	(16, 544)
 			font       	(object Font
 			    size       	10
@@ -3670,9 +814,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @149
-			    Parent_View 	@148
-			    location   	(1135, 500)
+			label      	(object SegLabel @33
+			    Parent_View 	@32
+			    location   	(775, 500)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -3683,24 +827,24 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD016D3010C"
+			    quidu      	"5DE6B7D00390"
 			    anchor_loc 	1
 			    nlines     	1
-			    max_width  	292
+			    max_width  	301
 			    justify    	0
-			    label      	"Get_user_data()"
+			    label      	"AddToFavorites()"
 			    pctDist    	0.500000
 			    height     	45
 			    orientation 	0)
 			line_color 	3342489
-			client     	@138
-			supplier   	@141
-			Focus_Src  	@140
-			Focus_Entry 	@142
-			origin     	(911, 544)
-			terminus   	(1360, 544)
+			client     	@23
+			supplier   	@26
+			Focus_Src  	@25
+			Focus_Entry 	@27
+			origin     	(607, 544)
+			terminus   	(944, 544)
 			ordinal    	1)
-		    (object InterMessView "senf_user_data()" @150
+		    (object SelfMessView "[IfPresent] addToFavorites" @34
 			location   	(16, 720)
 			font       	(object Font
 			    size       	10
@@ -3712,9 +856,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @151
-			    Parent_View 	@150
-			    location   	(856, 676)
+			label      	(object SegLabel @35
+			    Parent_View 	@34
+			    location   	(1051, 676)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -3725,77 +869,35 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD016FA02CB"
+			    quidu      	"5DE6B7FB01C2"
 			    anchor_loc 	1
 			    nlines     	1
-			    max_width  	298
+			    max_width  	460
 			    justify    	0
-			    label      	"senf_user_data()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	1)
-			line_color 	3342489
-			client     	@141
-			supplier   	@134
-			Focus_Src  	@143
-			Focus_Entry 	@136
-			origin     	(1360, 720)
-			terminus   	(352, 720)
-			ordinal    	2)
-		    (object InterMessView "[if password is correct] show user_interface()" @152
-			location   	(16, 1104)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @153
-			    Parent_View 	@152
-			    location   	(1079, 1060)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD017C202D3"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	785
-			    justify    	0
-			    label      	"[if password is correct] show user_interface()"
+			    label      	"[IfPresent] addToFavorites"
 			    pctDist    	0.500000
 			    height     	45
 			    orientation 	0)
 			line_color 	3342489
-			client     	@134
-			supplier   	@144
-			Focus_Src  	@137
-			Focus_Entry 	@145
-			origin     	(351, 1104)
-			terminus   	(1808, 1104)
-			ordinal    	3)))
-	    (object ObjectDiagram "log in"
+			client     	@26
+			supplier   	@26
+			Focus_Src  	@28
+			Focus_Entry 	@29
+			origin     	(976, 720)
+			terminus   	(1126, 720)
+			ordinal    	2)))
+	    (object ObjectDiagram "Add_to_Favorites"
 		mechanism_ref 	@2
-		quid       	"5DD0187B007C"
-		title      	"log in"
+		quid       	"5DE6B81F00C1"
+		title      	"Add_to_Favorites"
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ObjectView "interface: login_interface" @154
-			location   	(356, 384)
+		    (object ObjectView "Interface: UserInterface" @36
+			location   	(196, 384)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -3807,26 +909,26 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@154
+			    Parent_View 	@36
 			    location   	(63, 333)
 			    fill_color 	13434879
 			    nlines     	2
-			    max_width  	586
+			    max_width  	266
 			    justify    	0
-			    label      	"interface: login_interface")
+			    label      	"Interface: UserInterface")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DD0162C0365"
-			width      	604
+			quidu      	"5DE6B6F0030A"
+			width      	284
 			height     	126
 			annotation 	4
 			autoResize 	TRUE
 			subobjects 	0
 			x_offset   	0.000000
 			y_offset   	0.000000)
-		    (object ObjectView "User_data_base_controller" @155
-			location   	(1200, 384)
+		    (object ObjectView "FavoritesDataBaseController" @37
+			location   	(568, 384)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -3838,682 +940,26 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@155
-			    location   	(1060, 333)
+			    Parent_View 	@37
+			    location   	(415, 333)
 			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	280
-			    justify    	0
-			    label      	"User_data_base_controller")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0163F02C0"
-			width      	298
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object ObjectView "User_data_base" @156
-			location   	(976, 1120)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@156
-			    location   	(881, 1069)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	190
-			    justify    	0
-			    label      	"User_data_base")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0167D03AE"
-			width      	208
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object ObjectView "interface: user_interface" @157
-			location   	(240, 960)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@157
-			    location   	(96, 909)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	288
-			    justify    	0
-			    label      	"interface: user_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD0174200BE"
-			width      	306
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object LinkSelfView "" @158
-			location   	(356, 171)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD0170B0375"
-			client     	@154
-			supplier   	@154
-			vertices   	(list Points
-			    (299, 321)
-			    (413, 321))
-			line_style 	4)
-		    (object LinkView "" @159
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD016A700CA"
-			client     	@154
-			supplier   	@155
-			vertices   	(list Points
-			    (658, 384)
-			    (1050, 384))
-			line_style 	0)
-		    (object MessView "" @160
-			location   	(854, 340)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @161
-			    Parent_View 	@160
-			    location   	(854, 296)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD016A700CB"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	453
-			    justify    	0
-			    label      	"Check_Authentication()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@159
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(794, 340)
-			terminus   	(914, 340))
-		    (object LinkView "" @162
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD017C202D2"
-			client     	@154
-			supplier   	@157
-			vertices   	(list Points
-			    (342, 447)
-			    (252, 896))
-			line_style 	0)
-		    (object MessView "" @163
-			location   	(341, 681)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @164
-			    Parent_View 	@163
-			    location   	(385, 689)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD017C202D3"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	846
-			    justify    	0
-			    label      	"[if password is correct] show user_interface()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@162
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(352, 622)
-			terminus   	(330, 740))
-		    (object LinkView "" @165
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD016D3010B"
-			client     	@155
-			supplier   	@156
-			vertices   	(list Points
-			    (1180, 447)
-			    (995, 1056))
-			line_style 	0)
-		    (object MessView "" @166
-			location   	(1131, 764)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @167
-			    Parent_View 	@166
-			    location   	(1174, 776)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD016D3010C"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	450
-			    justify    	0
-			    label      	"Get_user_data()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@165
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(1147, 707)
-			terminus   	(1115, 821))
-		    (object LinkView "" @168
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD016FA02CA"
-			client     	@156
-			supplier   	@154
-			vertices   	(list Points
-			    (922, 1056)
-			    (408, 447))
-			line_style 	0)
-		    (object MessView "" @169
-			location   	(632, 781)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @170
-			    Parent_View 	@169
-			    location   	(599, 810)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD016FA02CB"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	450
-			    justify    	0
-			    label      	"senf_user_data()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			object_arc 	@168
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(670, 826)
-			terminus   	(594, 736))))
-	    (object InteractionDiagram "add_recipe"
-		mechanism_ref 	@3
-		quid       	"5DD43F8C009A"
-		title      	"add_recipe"
-		zoom       	100
-		max_height 	28350
-		max_width  	21600
-		origin_x   	0
-		origin_y   	163
-		items      	(list diagram_item_list
-		    (object InterObjView "Interface: recipe_interface" @171
-			location   	(192, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@171
-			    location   	(192, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
 			    nlines     	2
 			    max_width  	306
 			    justify    	0
-			    label      	"Interface: recipe_interface")
+			    label      	"FavoritesDataBaseController")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DD43FA70351"
+			quidu      	"5DE6B7360229"
 			width      	324
-			height     	867
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @172
-			    location   	(192, 368)
-			    line_color 	3342489
-			    InterObjView 	@171
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "Recipe_data_base_controller" @173
-			location   	(608, 225)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@173
-			    location   	(608, 224)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	282
-			    justify    	0
-			    label      	"Recipe_data_base_controller")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43FA70357"
-			width      	300
-			height     	867
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @174
-			    location   	(608, 368)
-			    line_color 	3342489
-			    InterObjView 	@173
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @175
-			    location   	(608, 560)
-			    line_color 	3342489
-			    InterObjView 	@173
-			    height     	92
-			    y_coord    	2
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @176
-			    location   	(608, 585)
-			    line_color 	3342489
-			    InterObjView 	@173
-			    height     	90
-			    y_coord    	0
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @177
-			    location   	(608, 752)
-			    line_color 	3342489
-			    InterObjView 	@173
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @178
-			    location   	(608, 912)
-			    line_color 	3342489
-			    InterObjView 	@173
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterObjView "Recipe_data_base" @179
-			location   	(1376, 240)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	TRUE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@179
-			    location   	(1376, 240)
-			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	282
-			    justify    	0
-			    label      	"Recipe_data_base")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43FA70363"
-			width      	300
-			height     	852
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @180
-			    location   	(1376, 320)
-			    line_color 	3342489
-			    InterObjView 	@179
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @181
-			    location   	(1376, 752)
-			    line_color 	3342489
-			    InterObjView 	@179
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @182
-			    location   	(1376, 912)
-			    line_color 	3342489
-			    InterObjView 	@179
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterMessView "add_recipe(name, ingridients, equipment, technique, instruction, category, level)" @183
-			location   	(16, 368)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @184
-			    Parent_View 	@183
-			    location   	(320, 579)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD43FA70353"
-			    anchor_loc 	1
-			    nlines     	3
-			    max_width  	569
-			    justify    	0
-			    label      	"add_recipe(name, ingridients, equipment, technique, instruction, category, level)"
-			    pctDist    	0.293507
-			    height     	45
-			    orientation 	1)
-			line_color 	3342489
-			client     	@171
-			supplier   	@173
-			Focus_Src  	@172
-			Focus_Entry 	@174
-			origin     	(207, 368)
-			terminus   	(592, 368)
-			ordinal    	0)
-		    (object SelfMessView "Create_recipe(name, ingridients, equipment, technique, instruction, category, level)" @185
-			location   	(16, 560)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @186
-			    Parent_View 	@185
-			    location   	(886, 437)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD43FA70359"
-			    anchor_loc 	1
-			    nlines     	4
-			    max_width  	550
-			    justify    	0
-			    label      	"Create_recipe(name, ingridients, equipment, technique, instruction, category, level)"
-			    pctDist    	1.753333
-			    height     	124
-			    orientation 	0)
-			line_color 	3342489
-			client     	@173
-			supplier   	@173
-			Focus_Src  	@175
-			Focus_Entry 	@176
-			origin     	(624, 560)
-			terminus   	(774, 560)
-			ordinal    	1)
-		    (object InterMessView "add_to_database()" @187
-			location   	(16, 752)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @188
-			    Parent_View 	@187
-			    location   	(991, 708)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD43FA7035C"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	332
-			    justify    	0
-			    label      	"add_to_database()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			line_color 	3342489
-			client     	@173
-			supplier   	@179
-			Focus_Src  	@177
-			Focus_Entry 	@181
-			origin     	(623, 752)
-			terminus   	(1360, 752)
-			ordinal    	2)
-		    (object InterMessView "*[is successfull] report_success() : boolean" @189
-			location   	(16, 912)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @190
-			    Parent_View 	@189
-			    location   	(992, 868)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD43FA7035E"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	760
-			    justify    	0
-			    label      	"*[is successfull] report_success() : boolean"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	1)
-			line_color 	3342489
-			client     	@179
-			supplier   	@173
-			Focus_Src  	@182
-			Focus_Entry 	@178
-			origin     	(1360, 912)
-			terminus   	(624, 912)
-			ordinal    	3)))
-	    (object ObjectDiagram "add_recipe"
-		mechanism_ref 	@3
-		quid       	"5DD441110077"
-		title      	"add_recipe"
-		zoom       	100
-		max_height 	28350
-		max_width  	21600
-		origin_x   	0
-		origin_y   	0
-		items      	(list diagram_item_list
-		    (object ObjectView "Interface: recipe_interface" @191
-			location   	(226, 384)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@191
-			    location   	(63, 333)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	326
-			    justify    	0
-			    label      	"Interface: recipe_interface")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43FA70351"
-			width      	344
 			height     	126
 			annotation 	4
 			autoResize 	TRUE
 			subobjects 	0
 			x_offset   	0.000000
 			y_offset   	0.000000)
-		    (object ObjectView "Recipe_data_base_controller" @192
-			location   	(1056, 416)
+		    (object ObjectView "FavoritesDataBase" @38
+			location   	(169, 928)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -4525,68 +971,37 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@192
-			    location   	(900, 365)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	312
-			    justify    	0
-			    label      	"Recipe_data_base_controller")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5DD43FA70357"
-			width      	330
-			height     	126
-			annotation 	4
-			autoResize 	TRUE
-			subobjects 	0
-			x_offset   	0.000000
-			y_offset   	0.000000)
-		    (object ObjectView "Recipe_data_base" @193
-			location   	(166, 928)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@193
+			    Parent_View 	@38
 			    location   	(63, 877)
 			    fill_color 	13434879
 			    nlines     	2
-			    max_width  	206
+			    max_width  	212
 			    justify    	0
-			    label      	"Recipe_data_base")
+			    label      	"FavoritesDataBase")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5DD43FA70363"
-			width      	224
+			quidu      	"5DE6B79E0391"
+			width      	230
 			height     	126
 			annotation 	4
 			autoResize 	TRUE
 			subobjects 	0
 			x_offset   	0.000000
 			y_offset   	0.000000)
-		    (object LinkSelfView "" @194
-			location   	(1056, 203)
+		    (object LinkSelfView "" @39
+			location   	(169, 715)
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"5DD43FA70358"
-			client     	@192
-			supplier   	@192
+			quidu      	"5DE6B7FB01C1"
+			client     	@38
+			supplier   	@38
 			vertices   	(list Points
-			    (999, 353)
-			    (1113, 353))
+			    (112, 865)
+			    (226, 865))
 			line_style 	4)
-		    (object MessView "" @195
-			location   	(1056, 159)
+		    (object MessView "" @40
+			location   	(169, 671)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -4598,9 +1013,9 @@
 			    color      	0
 			    default_color 	TRUE)
 			line_color 	3342489
-			label      	(object SegLabel @196
-			    Parent_View 	@195
-			    location   	(1056, 115)
+			label      	(object SegLabel @41
+			    Parent_View 	@40
+			    location   	(169, 627)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -4611,34 +1026,34 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD43FA70359"
+			    quidu      	"5DE6B7FB01C2"
 			    anchor_loc 	1
 			    nlines     	1
-			    max_width  	1478
+			    max_width  	494
 			    justify    	0
-			    label      	"Create_recipe(name, ingridients, equipment, technique, instruction, category, level)"
+			    label      	"[IfPresent] addToFavorites"
 			    pctDist    	0.500000
 			    height     	45
 			    orientation 	0)
-			object_arc 	@194
+			object_arc 	@39
 			pctDist    	0.500000
 			height     	45
 			orientation 	0
 			dir        	1
-			origin     	(996, 159)
-			terminus   	(1116, 159))
-		    (object LinkView "" @197
+			origin     	(109, 671)
+			terminus   	(229, 671))
+		    (object LinkView "" @42
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"5DD43FA70352"
-			client     	@191
-			supplier   	@192
+			quidu      	"5DE6B7880076"
+			client     	@36
+			supplier   	@37
 			vertices   	(list Points
-			    (398, 390)
-			    (890, 409))
+			    (338, 384)
+			    (405, 384))
 			line_style 	0)
-		    (object MessView "" @198
-			location   	(646, 355)
+		    (object MessView "" @43
+			location   	(371, 340)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -4650,9 +1065,9 @@
 			    color      	0
 			    default_color 	TRUE)
 			line_color 	3342489
-			label      	(object SegLabel @199
-			    Parent_View 	@198
-			    location   	(605, 248)
+			label      	(object SegLabel @44
+			    Parent_View 	@43
+			    location   	(371, 296)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -4663,76 +1078,34 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD43FA70353"
-			    anchor_loc 	1
-			    nlines     	3
-			    max_width  	569
-			    justify    	0
-			    label      	"add_recipe(name, ingridients, equipment, technique, instruction, category, level)"
-			    pctDist    	0.129023
-			    height     	106
-			    orientation 	0)
-			object_arc 	@197
-			pctDist    	0.500000
-			height     	45
-			orientation 	0
-			dir        	1
-			origin     	(586, 353)
-			terminus   	(706, 357))
-		    (object LinkView "" @200
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5DD43FA7035B"
-			client     	@192
-			supplier   	@193
-			vertices   	(list Points
-			    (945, 479)
-			    (276, 864))
-			line_style 	0)
-		    (object MessView "" @201
-			location   	(632, 711)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			line_color 	3342489
-			label      	(object SegLabel @202
-			    Parent_View 	@201
-			    location   	(752, 800)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5DD43FA7035C"
+			    quidu      	"5DE6B7880077"
 			    anchor_loc 	1
 			    nlines     	1
 			    max_width  	450
 			    justify    	0
-			    label      	"add_to_database()"
-			    pctDist    	0.007284
-			    height     	138
+			    label      	"AddToFavorites()"
+			    pctDist    	0.500000
+			    height     	45
 			    orientation 	0)
-			object_arc 	@200
+			object_arc 	@42
 			pctDist    	0.500000
 			height     	45
 			orientation 	0
 			dir        	1
-			origin     	(683, 681)
-			terminus   	(581, 741))
-		    (object MessView "" @203
-			location   	(589, 634)
+			origin     	(311, 340)
+			terminus   	(431, 340))
+		    (object LinkView "" @45
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5DE6B7D0038F"
+			client     	@37
+			supplier   	@38
+			vertices   	(list Points
+			    (521, 447)
+			    (214, 864))
+			line_style 	0)
+		    (object MessView "" @46
+			location   	(403, 683)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -4744,9 +1117,9 @@
 			    color      	0
 			    default_color 	TRUE)
 			line_color 	3342489
-			label      	(object SegLabel @204
-			    Parent_View 	@203
-			    location   	(409, 532)
+			label      	(object SegLabel @47
+			    Parent_View 	@46
+			    location   	(439, 710)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -4757,22 +1130,22 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    quidu      	"5DD43FA7035E"
+			    quidu      	"5DE6B7D00390"
 			    anchor_loc 	1
 			    nlines     	1
-			    max_width  	794
+			    max_width  	450
 			    justify    	0
-			    label      	"*[is successfull] report_success() : boolean"
-			    pctDist    	-0.402962
-			    height     	176
+			    label      	"AddToFavorites()"
+			    pctDist    	0.500000
+			    height     	45
 			    orientation 	0)
-			object_arc 	@200
+			object_arc 	@45
 			pctDist    	0.500000
 			height     	45
-			orientation 	1
-			dir        	-1
-			origin     	(537, 663)
-			terminus   	(641, 605))))))
+			orientation 	0
+			dir        	1
+			origin     	(438, 635)
+			terminus   	(368, 731))))))
     root_category 	(object Class_Category "Logical View"
 	quid       	"39C9260C00D5"
 	exportControl 	"Public"
@@ -4805,7 +1178,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object CategoryView "Logical View::java" @205
+		    (object CategoryView "Logical View::java" @48
 			location   	(208, 272)
 			font       	(object Font
 			    size       	10
@@ -4818,7 +1191,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@205
+			    Parent_View 	@48
 			    location   	(64, 188)
 			    nlines     	2
 			    max_width  	288
@@ -4830,7 +1203,7 @@
 			quidu      	"39C92661003B"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::javax" @206
+		    (object CategoryView "Logical View::javax" @49
 			location   	(656, 272)
 			font       	(object Font
 			    size       	10
@@ -4843,7 +1216,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@206
+			    Parent_View 	@49
 			    location   	(512, 188)
 			    nlines     	2
 			    max_width  	288
@@ -4855,7 +1228,7 @@
 			quidu      	"39C926610018"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::org" @207
+		    (object CategoryView "Logical View::org" @50
 			location   	(1104, 272)
 			font       	(object Font
 			    size       	10
@@ -4868,7 +1241,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@207
+			    Parent_View 	@50
 			    location   	(960, 188)
 			    nlines     	2
 			    max_width  	288
@@ -4889,7 +1262,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @208
+		    (object NoteView @51
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -4905,7 +1278,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @209
+		    (object NoteView @52
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -4921,7 +1294,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @210
+		    (object NoteView @53
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -4937,7 +1310,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @211
+		    (object NoteView @54
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -4953,7 +1326,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @212
+		    (object Label @55
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -4969,7 +1342,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @213
+		    (object Label @56
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -4985,7 +1358,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @214
+		    (object Label @57
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -5001,7 +1374,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @215
+		    (object Label @58
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -5017,7 +1390,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @216
+		    (object Label @59
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
@@ -5062,7 +1435,7 @@
 		origin_y   	0
 		items      	(list diagram_item_list)))
 	category   	"Logical View"
-	quidu      	"5DCFC9400248")
+	quidu      	"5DE6B6AF03B8")
     process_structure 	(object Processes
 	quid       	"39C9260C00D8"
 	ProcsNDevs 	(list
