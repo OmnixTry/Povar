@@ -30,6 +30,8 @@ namespace source {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::TextBox^ textBox2;
 	public:
 		float lvl;
 		StudentPage(String^ login, float lvl)
@@ -84,6 +86,8 @@ namespace source {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -91,7 +95,7 @@ namespace source {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(814, -3);
+			this->label1->Location = System::Drawing::Point(928, -4);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(120, 29);
 			this->label1->TabIndex = 0;
@@ -213,7 +217,7 @@ namespace source {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(12, 420);
+			this->textBox1->Location = System::Drawing::Point(12, 386);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(329, 34);
 			this->textBox1->TabIndex = 10;
@@ -222,7 +226,7 @@ namespace source {
 			// 
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button5->Location = System::Drawing::Point(12, 483);
+			this->button5->Location = System::Drawing::Point(12, 439);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(265, 69);
 			this->button5->TabIndex = 11;
@@ -236,12 +240,35 @@ namespace source {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label7->ForeColor = System::Drawing::Color::Red;
-			this->label7->Location = System::Drawing::Point(390, 470);
+			this->label7->Location = System::Drawing::Point(381, 412);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(211, 52);
+			this->label7->Size = System::Drawing::Size(208, 51);
 			this->label7->TabIndex = 12;
 			this->label7->Text = L"Not found";
 			this->label7->Visible = false;
+			// 
+			// button6
+			// 
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button6->Location = System::Drawing::Point(12, 524);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(265, 76);
+			this->button6->TabIndex = 13;
+			this->button6->Text = L"Show my favorite recipe";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &StudentPage::Button6_Click);
+			// 
+			// textBox2
+			// 
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox2->Location = System::Drawing::Point(806, 354);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(362, 246);
+			this->textBox2->TabIndex = 14;
+			this->textBox2->Visible = false;
 			// 
 			// StudentPage
 			// 
@@ -249,7 +276,9 @@ namespace source {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1009, 612);
+			this->ClientSize = System::Drawing::Size(1180, 612);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->textBox1);
@@ -304,6 +333,28 @@ namespace source {
 			form_cooking->Show();
 			this->Close();
 		}
+	}
+	private: System::Void Button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		std::string data = "..\\data\\";
+		std::string nameOfText = "_favorites.txt";
+		std::string login = msclr::interop::marshal_as<std::string>(get_login());
+		std::ifstream fav_list(data + login + nameOfText);
+		std::string recipe_name;
+		std::vector<std::string> favorites;
+		if (!fav_list.is_open()) return;
+		recipeEditor the_editor;
+
+		while (!fav_list.eof())
+		{
+			std::getline(fav_list, recipe_name);
+			if (recipe_name.size() != 0)
+				favorites.push_back(the_editor.searchByName(recipe_name)[0].getName());
+		}
+		for (int i = 0; i < favorites.size(); i++) {
+			String^ sys_str = gcnew String(favorites[i].c_str());
+			textBox2->Text += System::Environment::NewLine + sys_str;
+		}
+		textBox2->Visible = true;
 	}
 };
 }
