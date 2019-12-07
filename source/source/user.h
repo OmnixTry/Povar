@@ -3,6 +3,8 @@
 #include <vector>
 #include "recipe.h"
 
+void change_level(const std::string logn, const float lvl);
+
 class user_data_base_controller
 {
 public:
@@ -41,7 +43,7 @@ public:
 class student : public user
 {
 public:
-	void write_to_file();
+	void write_to_file(const std::string users_file_name = "..\\data\\users.txt");
 	float get_level();
 	student(std::string logn, std::string passwd, float lvl = 0) : user(logn, passwd), level(lvl) {};
 	~student() {};

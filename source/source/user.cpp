@@ -24,12 +24,12 @@ bool user_data_base_controller::add_user(string logn, string passwd, string acco
 	return false;
 }
 
-void student::write_to_file() 
+void student::write_to_file(const std::string users_file_name)
 {
-	const string users_file_name = "..\\data\\users.txt";
+	//const string users_file_name = "..\\data\\users.txt";
 	ofstream users(users_file_name, ios::app);
 	string buff; 
-	buff = "student " + login + " " + password + " 0\n";
+	buff = "student " + login + " " + password + " " + to_string(level) + "\n";
 	users << buff;
 	users.close();
 }
@@ -128,4 +128,47 @@ user::user(std::string logn, std::string passwd) : login(logn), password(passwd)
 std::vector<recipe> user::get_favorites()
 {
 	return favorites;
+}
+
+void change_level(const string logn, const float lvl)
+{
+	const string dir_file = "..\\data\\users.txt";
+	const string buff_file = "..\\data\\users_buff.txt";
+
+	ifstream user_data_file(dir_file);
+	ofstream user_data_buffer(buff_file);
+
+	string passwd, accountType;
+	float llvl;
+
+	string clogin;
+	string buff;
+	int tmp = 0;
+	while (!user_data_file.eof())
+	{
+		getline(user_data_file, buff);
+		clogin = buff.substr(buff.find_first_of(' ') + 1, buff.find(' ', buff.find_first_of(' ') + 1) - buff.find_first_of(' ') - 1);
+
+		if (logn == clogin)
+		{
+			user_data_buffer.close();
+			parse_user_data(buff, logn, passwd, accountType, llvl);
+			(new student(logn, passwd, lvl))->write_to_file(buff_file);
+			user_data_buffer.open(buff_file, ios::app);
+		}
+		else {
+			user_data_buffer << buff << "\n";
+		}
+	}
+	user_data_buffer.close();
+	user_data_file.close();
+	ifstream us_buff_file(buff_file);
+	ofstream original_user_data(dir_file);
+
+	while (!us_buff_file.eof()) {
+		getline(us_buff_file, buff);
+		original_user_data << buff << "\n";
+	}
+	original_user_data.close();
+	us_buff_file.close();
 }
