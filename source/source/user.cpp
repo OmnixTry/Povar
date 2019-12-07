@@ -153,7 +153,7 @@ void change_level(const string logn, const float lvl)
 		{
 			user_data_buffer.close();
 			parse_user_data(buff, logn, passwd, accountType, llvl);
-			(new student(logn, passwd, lvl))->write_to_file(buff_file);
+			(new student(logn, passwd, llvl+lvl))->write_to_file(buff_file);
 			user_data_buffer.open(buff_file, ios::app);
 		}
 		else {
